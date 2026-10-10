@@ -15,10 +15,12 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   /**
    * Yoruba, Hausa and Igbo text (and the ₦ sign) cannot be stored in legacy single-byte
    * encodings. Fail fast with a clear message instead of failing mid-import.
+   * `server_encoding` reports the current database's encoding and, unlike `pg_database`,
+   * is readable on managed hosts that restrict the system catalogues (e.g. Clever Cloud).
    */
   private async assertUtf8(): Promise<void> {
     const rows = await this.$queryRaw<Array<{ encoding: string }>>`
-      SELECT pg_encoding_to_char(encoding) AS encoding FROM pg_database WHERE datname = current_database()`;
+      SELECT current_setting('server_encoding') AS encoding`;
     const encoding = rows[0]?.encoding;
     if (encoding !== 'UTF8') {
       throw new Error(

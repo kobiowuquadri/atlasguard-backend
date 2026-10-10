@@ -1,19 +1,12 @@
-# Render Blueprint for the AtlasGuard API + PostgreSQL (repository root = this folder).
+# Render Blueprint for the AtlasGuard API (repository root = this folder).
+# PostgreSQL is external (Clever Cloud): paste its URL as DATABASE_URL when Render asks.
 # The dashboard deploys separately (Vercel); N-ATLaS runs on a GPU host.
-# Free plans: the web service sleeps after 15 minutes without requests (≈1 min cold start) and
-# free PostgreSQL databases expire after 30 days — use paid plans for anything long-lived.
-databases:
-  - name: atlasguard-db
-    databaseName: atlasguard
-    user: atlasguard
-    region: frankfurt # closest Render region to Nigeria; must match the service
-    plan: free
-
+# Free plan: the web service sleeps after 15 minutes without requests (≈1 min cold start).
 services:
   - type: web
     name: atlasguard-api
     runtime: node
-    region: frankfurt
+    region: frankfurt # closest Render region to Nigeria
     plan: free
     # NODE_ENV=production (below) makes pnpm skip devDependencies, but the build needs them
     # (TypeScript, Nest CLI, Prisma CLI), so the install step runs in development mode.
@@ -31,9 +24,7 @@ services:
       - key: NODE_VERSION
         value: "24"
       - key: DATABASE_URL
-        fromDatabase:
-          name: atlasguard-db
-          property: connectionString
+        sync: false # postgresql://…?connection_limit=2&pool_timeout=20 (Clever Cloud DEV allows 5 connections in total)
       - key: TRUST_PROXY
         value: "true"
       - key: API_KEY_PEPPER
