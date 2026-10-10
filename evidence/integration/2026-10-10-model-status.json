@@ -1,0 +1,49 @@
+{
+    "success": true,
+    "data": {
+        "natlas": {
+            "configured": true,
+            "health": {
+                "status": "available",
+                "checkedAt": "2026-10-10T09:36:06.007Z",
+                "latencyMs": 969,
+                "simulated": false,
+                "message": "N-ATLaS endpoint is reachable.",
+                "details": {
+                    "status": "ready",
+                    "model_loaded": true,
+                    "model_id": "NCAIR1/N-ATLaS",
+                    "error": null,
+                    "uptime_seconds": 486,
+                    "service_version": "0.1.0"
+                }
+            },
+            "model": {
+                "providerType": "NATLAS",
+                "providerName": "N-ATLaS (self-hosted endpoint)",
+                "modelIdentifier": "NCAIR1/N-ATLaS",
+                "servedModel": "NCAIR1/N-ATLaS",
+                "revision": "e294476928aca9030e924ca27bb8e085e8581273",
+                "dtype": "float16",
+                "quantization": "none",
+                "device": "cuda x2 (Tesla T4)",
+                "runtime": "transformers 4.57.6; torch 2.11.0+cu128",
+                "contextLength": 131072,
+                "simulated": false,
+                "reportedBy": "provider"
+            }
+        },
+        "fixtures": {
+            "enabled": true,
+            "health": {
+                "status": "available",
+                "checkedAt": "2026-10-10T09:36:08.221Z",
+                "latencyMs": 0,
+                "simulated": true,
+                "message": "Development fixtures are available. Output is simulated and is not produced by N-ATLaS."
+            },
+            "simulated": true
+        },
+        "attribution": "N-ATLaS is an initiative of the Federal Ministry of Communications, Innovation and Digital Economy, and powered by Awarri Technologies."
+    }
+}

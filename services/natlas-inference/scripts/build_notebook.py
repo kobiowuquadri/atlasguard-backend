@@ -127,6 +127,11 @@ print(f"Total GPU memory: {{total_vram_gb:.1f}} GB -> quantization = {{quantizat
             """
 import subprocess, time, json, urllib.request
 
+# Re-running this cell replaces a server left from an earlier attempt (it would still hold port 8000).
+if "server" in globals() and server.poll() is None:
+    server.terminate()
+    server.wait(timeout=30)
+
 log = open("natlas-inference/server.log", "w")
 server = subprocess.Popen(
     [sys.executable, "-m", "uvicorn", "app.main:app_factory", "--factory", "--host", "127.0.0.1", "--port", "8000"],
@@ -148,6 +153,12 @@ while True:
     if h.get("model_loaded") or h.get("status") == "error" or server.poll() is not None:
         break
 print(open("natlas-inference/server.log").read()[-2000:])
+if not h.get("model_loaded"):
+    raise RuntimeError(
+        "N-ATLaS did not load - read the log above. '403 ... gated repo' means the Hugging Face account behind "
+        "HF_TOKEN has not been granted access: open https://huggingface.co/NCAIR1/N-ATLaS while signed in to that "
+        "account and accept the terms, then run this cell again."
+    )
 """
         ),
         md("## 5. Check provenance and run a test generation"),
@@ -176,6 +187,8 @@ print(json.dumps(reply["usage"]), json.dumps(reply["atlasguard"]))
 import re
 subprocess.run("wget -q -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared",
                shell=True, check=True)
+if "tunnel" in globals() and tunnel.poll() is None:
+    tunnel.terminate()
 tunnel_log = open("cloudflared.log", "w")
 tunnel = subprocess.Popen(["./cloudflared", "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:8000"],
                           stdout=tunnel_log, stderr=subprocess.STDOUT)

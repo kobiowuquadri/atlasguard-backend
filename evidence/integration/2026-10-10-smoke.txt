@@ -1,0 +1,27 @@
+health: available (862 ms) — N-ATLaS endpoint is reachable.
+model: {
+  "providerType": "NATLAS",
+  "providerName": "N-ATLaS (self-hosted endpoint)",
+  "modelIdentifier": "NCAIR1/N-ATLaS",
+  "servedModel": "NCAIR1/N-ATLaS",
+  "revision": "e294476928aca9030e924ca27bb8e085e8581273",
+  "dtype": "float16",
+  "quantization": "none",
+  "device": "cuda x2 (Tesla T4)",
+  "runtime": "transformers 4.57.6; torch 2.11.0+cu128",
+  "contextLength": 131072,
+  "simulated": false,
+  "reportedBy": "provider"
+}
+
+[capital.en-NG] served by NCAIR1/N-ATLaS in 1211 ms (provider generation 798 ms)
+prompt:   What is the capital city of Nigeria? Answer in one sentence.
+response: The capital city of Nigeria is Abuja.
+verdict:  PASSED: 3 of 3 applicable checks passed.
+
+[capital.yo] served by NCAIR1/N-ATLaS in 2789 ms (provider generation 1897 ms)
+prompt:   Kí ni olú-ìlú orílẹ̀-èdè Nàìjíríà? Dáhùn ní gbólóhùn kan ní èdè Yorùbá.
+response: Olú-ìlú orílẹ̀-èdè Nàìjíríà ni Abuja.
+verdict:  PASSED: 3 of 3 applicable checks passed.
+
+N-ATLaS smoke test passed.

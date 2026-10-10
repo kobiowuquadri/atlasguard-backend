@@ -8,7 +8,7 @@ done; link the proof.
 | Requirement | How AtlasGuard meets it | Status |
 |---|---|---|
 | Functioning technical application | API + dashboard + worker + SDK; 180+ automated tests | Built and tested locally |
-| Genuine integration with N-ATLaS | `NatlasProvider` + inference service serving the official `NCAIR1/N-ATLaS` weights; evidence bundle per run | **Pending: run on a GPU host and export evidence** |
+| Genuine integration with N-ATLaS | `NatlasProvider` + inference service serving the official `NCAIR1/N-ATLaS` weights; evidence bundle per run | **Verified locally on 2026-10-10** — official weights on Kaggle (2 × T4, float16, revision `e2944769…`): [smoke test](../evidence/integration/2026-10-10-smoke.txt), [model status](../evidence/integration/2026-10-10-model-status.json), full 57-case run [`614673bc`](../evidence/integration/2026-10-10-run-614673bc.json) (digest verified). Pending: repeat on the deployed platform |
 | Tooling that makes N-ATLaS easier to use/evaluate | Benchmarks, evaluation engine, cross-language consistency, API/SDK, reports | Built |
 | Reproducible evaluation results | Run provenance (benchmark hash, case snapshots, model revision, parameters, evaluator version) | Built |
 | Technical documentation | `README.md`, `docs/*`, OpenAPI | Written |
@@ -21,7 +21,8 @@ done; link the proof.
 
 - [ ] A completed evaluation run with the **N-ATLaS** configuration (not fixtures) on the
       deployed platform, and its evidence bundle saved under `evidence/integration/`.
-- [ ] `pnpm smoke:natlas` output saved under `evidence/integration/`.
+      *(A local run — `614673bc`, 2026-10-10 — is complete and exported; the deployed run is still to do.)*
+- [x] `pnpm smoke:natlas` output saved under `evidence/integration/` (2026-10-10).
 - [ ] At least two real external testers completed sessions and submitted consented feedback.
 - [ ] Fixture provider disabled on the deployed API (no development banner).
 
