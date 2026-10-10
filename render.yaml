@@ -8,10 +8,10 @@ services:
     runtime: node
     region: frankfurt # closest Render region to Nigeria
     plan: free
+    # Render's Node image ships pnpm (read-only, so `corepack enable` fails there).
     # NODE_ENV=production (below) makes pnpm skip devDependencies, but the build needs them
     # (TypeScript, Nest CLI, Prisma CLI), so the install step runs in development mode.
     buildCommand: >-
-      corepack enable &&
       NODE_ENV=development pnpm install --frozen-lockfile &&
       pnpm build:packages &&
       pnpm --filter @atlasguard/api exec prisma generate &&
