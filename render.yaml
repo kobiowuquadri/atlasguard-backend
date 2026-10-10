@@ -1,19 +1,25 @@
 # Render Blueprint for the AtlasGuard API + PostgreSQL (repository root = this folder).
 # The dashboard deploys separately (Vercel); N-ATLaS runs on a GPU host.
+# Free plans: the web service sleeps after 15 minutes without requests (≈1 min cold start) and
+# free PostgreSQL databases expire after 30 days — use paid plans for anything long-lived.
 databases:
   - name: atlasguard-db
     databaseName: atlasguard
     user: atlasguard
+    region: frankfurt # closest Render region to Nigeria; must match the service
     plan: free
 
 services:
   - type: web
     name: atlasguard-api
     runtime: node
+    region: frankfurt
     plan: free
+    # NODE_ENV=production (below) makes pnpm skip devDependencies, but the build needs them
+    # (TypeScript, Nest CLI, Prisma CLI), so the install step runs in development mode.
     buildCommand: >-
       corepack enable &&
-      pnpm install --frozen-lockfile &&
+      NODE_ENV=development pnpm install --frozen-lockfile &&
       pnpm build:packages &&
       pnpm --filter @atlasguard/api exec prisma generate &&
       pnpm --filter @atlasguard/api build
@@ -33,7 +39,7 @@ services:
       - key: API_KEY_PEPPER
         generateValue: true
       - key: APP_ORIGINS
-        sync: false # e.g. https://atlasguard.vercel.app
+        sync: false # the dashboard origin, e.g. https://atlasguard.vercel.app
       - key: ADMIN_EMAILS
         sync: false
       - key: NATLAS_BASE_URL
@@ -42,3 +48,5 @@ services:
         sync: false
       - key: NATLAS_MODEL_REVISION
         sync: false
+      - key: NATLAS_MAX_CONCURRENCY
+        value: "1" # the AtlasGuard inference service generates one response at a time

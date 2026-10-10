@@ -69,7 +69,7 @@ Follow [natlas-integration.md](natlas-integration.md), then set `NATLAS_BASE_URL
 | `NATLAS_BASE_URL` / `NATLAS_API_KEY` | — | N-ATLaS inference endpoint and its bearer token |
 | `NATLAS_MODEL_ID` / `NATLAS_MODEL_REVISION` | `NCAIR1/N-ATLaS` / — | Model identity recorded on runs (revision is also read from `/model-info`) |
 | `NATLAS_ACCEPTED_MODEL_NAMES` | — | Extra served-model names for the same weights |
-| `NATLAS_TIMEOUT_MS` / `NATLAS_MAX_RETRIES` / `NATLAS_MAX_CONCURRENCY` | 180000 / 2 / 2 | Provider behaviour |
+| `NATLAS_TIMEOUT_MS` / `NATLAS_MAX_RETRIES` / `NATLAS_MAX_CONCURRENCY` | 180000 / 2 / 2 | Provider behaviour; set concurrency to `1` for the AtlasGuard inference service (it generates one response at a time), so latency excludes queueing |
 | `ENABLE_FIXTURE_PROVIDER` / `FIXTURE_DELAY_MS` | on outside production / 400 | Simulated fixtures (cannot be enabled in production) |
 | `WORKER_ENABLED` / `WORKER_CONCURRENCY` / `WORKER_POLL_INTERVAL_MS` / `WORKER_STALE_AFTER_MS` / `CASE_MAX_ATTEMPTS` | true / 2 / 2000 / 120000 / 3 | Worker |
 | `MAX_CASES_PER_RUN` | 500 | Run size limit |

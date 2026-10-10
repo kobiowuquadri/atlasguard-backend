@@ -59,7 +59,7 @@ flowchart LR
 | `packages/benchmarks` | Datasets, JSON Schema, validation scripts, simulated fixtures |
 | `packages/sdk` | `@atlasguard/sdk` TypeScript client |
 | `services/natlas-inference` | Python inference service for the official N-ATLaS weights (+ Kaggle/Colab notebook, Dockerfile) |
-| `docs/` | Architecture, setup, API, methodology, N-ATLaS integration, benchmarking, deployment, submission |
+| `docs/` | Architecture, setup, API reference, testing guide, methodology, N-ATLaS integration, benchmarking, deployment, submission |
 | [atlasguard-frontend](https://github.com/kobiowuquadri/atlasguard-frontend) | Next.js 16 dashboard (separate repository) |
 
 More detail: [docs/architecture.md](docs/architecture.md).
