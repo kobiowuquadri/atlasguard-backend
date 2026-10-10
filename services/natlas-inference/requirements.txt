@@ -1,0 +1,12 @@
+# Runtime for the N-ATLaS inference service (GPU host).
+# torch is intentionally not pinned here: install the CUDA build that matches the host
+# (Kaggle/Colab images already include it). See README.md.
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic>=2.8,<3
+transformers>=4.45,<5
+accelerate>=0.34
+huggingface_hub>=0.25
+safetensors>=0.4
+# Optional, only for QUANTIZATION=8bit|4bit on small GPUs:
+# bitsandbytes>=0.43

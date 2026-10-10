@@ -1,0 +1,1763 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "operationId": "SystemController_health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Liveness: the process is up.",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/ready": {
+      "get": {
+        "operationId": "SystemController_ready",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Readiness: the database is reachable.",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/users/me": {
+      "patch": {
+        "operationId": "UsersController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Update your profile.",
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/users/me/onboarding-complete": {
+      "post": {
+        "operationId": "UsersController_completeOnboarding",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Mark first-run onboarding as completed.",
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/feedback": {
+      "post": {
+        "operationId": "FeedbackController_submit",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmitFeedbackDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Submit beta-testing feedback (stored with the tester’s consent).",
+        "tags": [
+          "Beta feedback"
+        ]
+      },
+      "get": {
+        "operationId": "FeedbackController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "List all beta feedback (administrators).",
+        "tags": [
+          "Beta feedback"
+        ]
+      }
+    },
+    "/api/v1/feedback/export": {
+      "get": {
+        "operationId": "FeedbackController_export",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Download all consented beta feedback as JSON for the evidence folder (administrators).",
+        "tags": [
+          "Beta feedback"
+        ]
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Create an account and start a dashboard session (HTTP-only cookie).",
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Sign in and start a dashboard session (HTTP-only cookie).",
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "End the current dashboard session.",
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "The authenticated user (session or API key).",
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
+    "/api/v1/api-keys": {
+      "post": {
+        "operationId": "ApiKeysController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApiKeyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Create an API key. The plaintext key is returned once and never again.",
+        "tags": [
+          "API keys"
+        ]
+      },
+      "get": {
+        "operationId": "ApiKeysController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "List your API keys (prefixes only).",
+        "tags": [
+          "API keys"
+        ]
+      }
+    },
+    "/api/v1/api-keys/{id}": {
+      "delete": {
+        "operationId": "ApiKeysController_revoke",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Revoke an API key.",
+        "tags": [
+          "API keys"
+        ]
+      }
+    },
+    "/api/v1/projects": {
+      "post": {
+        "operationId": "ProjectsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Create a project representing an AI application to evaluate.",
+        "tags": [
+          "Projects"
+        ]
+      },
+      "get": {
+        "operationId": "ProjectsController_list",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "List your projects with their latest evaluation run.",
+        "tags": [
+          "Projects"
+        ]
+      }
+    },
+    "/api/v1/projects/{id}": {
+      "get": {
+        "operationId": "ProjectsController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Project details, recent runs and evaluation summary.",
+        "tags": [
+          "Projects"
+        ]
+      },
+      "patch": {
+        "operationId": "ProjectsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "tags": [
+          "Projects"
+        ]
+      },
+      "delete": {
+        "operationId": "ProjectsController_archive",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Archive a project. Evaluation history is preserved; project API keys are revoked.",
+        "tags": [
+          "Projects"
+        ]
+      }
+    },
+    "/api/v1/model/status": {
+      "get": {
+        "operationId": "ModelController_status",
+        "parameters": [
+          {
+            "name": "refresh",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Live status of the configured N-ATLaS endpoint (and of simulated fixtures, when enabled).",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/model-configurations": {
+      "get": {
+        "operationId": "ModelController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Model configurations available for evaluation runs on this server.",
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/benchmarks": {
+      "get": {
+        "operationId": "BenchmarksController_list",
+        "parameters": [
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "required": false,
+            "in": "query",
+            "description": "Only suites containing cases in this language.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en-NG",
+                "yo",
+                "ha",
+                "ig"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "financial_terminology",
+                "nigerian_english",
+                "education",
+                "civic_information",
+                "cultural_context",
+                "translation_meaning"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "List benchmark suites you can use (official, public and your own).",
+        "tags": [
+          "Benchmarks"
+        ]
+      },
+      "post": {
+        "operationId": "BenchmarksController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Benchmark dataset JSON (see packages/benchmarks/schemas).",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Create a private benchmark suite from a dataset (AtlasGuard format v1).",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/benchmarks/import": {
+      "post": {
+        "operationId": "BenchmarksController_import",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportBenchmarkDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Validate and import a dataset. Use dryRun to validate without saving.",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/benchmarks/{id}": {
+      "get": {
+        "operationId": "BenchmarksController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Suite details, statistics and semantic groups.",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/benchmarks/{id}/cases": {
+      "get": {
+        "operationId": "BenchmarksController_cases",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en-NG",
+                "yo",
+                "ha",
+                "ig"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "financial_terminology",
+                "nigerian_english",
+                "education",
+                "civic_information",
+                "cultural_context",
+                "translation_meaning"
+              ]
+            }
+          },
+          {
+            "name": "reviewStatus",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DRAFT",
+                "PENDING_REVIEW",
+                "VERIFIED",
+                "REJECTED"
+              ]
+            }
+          },
+          {
+            "name": "semanticGroupId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Benchmark cases with their reference facts. Filter by language, category or review status.",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/benchmarks/{id}/export": {
+      "get": {
+        "operationId": "BenchmarksController_export",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Download the suite as an importable dataset JSON file.",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/benchmarks/{id}/cases/{caseId}/review": {
+      "patch": {
+        "operationId": "BenchmarksController_review",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "caseId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewCaseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Record a content review. Verifying requires attestation that the reviewer is fluent in the case language.",
+        "tags": [
+          "Benchmarks"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs": {
+      "post": {
+        "operationId": "EvaluationsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRunDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Queue an evaluation run. Cases are executed asynchronously by the worker; poll GET /evaluations/runs/:id.",
+        "tags": [
+          "Evaluations"
+        ]
+      },
+      "get": {
+        "operationId": "EvaluationsController_list",
+        "parameters": [
+          {
+            "name": "projectId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "QUEUED",
+                "RUNNING",
+                "COMPLETED",
+                "FAILED",
+                "CANCELLED"
+              ]
+            }
+          },
+          {
+            "name": "suiteId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "List evaluation runs in your projects.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}": {
+      "get": {
+        "operationId": "EvaluationsController_get",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Run details, progress and aggregate results.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/results": {
+      "get": {
+        "operationId": "EvaluationsController_results",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "language",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en-NG",
+                "yo",
+                "ha",
+                "ig"
+              ]
+            }
+          },
+          {
+            "name": "verdict",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "PASSED",
+                "FAILED",
+                "NEEDS_REVIEW",
+                "SKIPPED",
+                "ERROR"
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "financial_terminology",
+                "nigerian_english",
+                "education",
+                "civic_information",
+                "cultural_context",
+                "translation_meaning"
+              ]
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Per-case results: prompt, actual model response, checks, latency.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/results/{resultId}": {
+      "get": {
+        "operationId": "EvaluationsController_result",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resultId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "One result with its full check details and review history.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/results/{resultId}/reviews": {
+      "post": {
+        "operationId": "EvaluationsController_review",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resultId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewResultDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Record a human review decision (PASSED/FAILED) for a result.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/consistency": {
+      "get": {
+        "operationId": "EvaluationsController_consistency",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Cross-language consistency findings with responses side by side.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/cancel": {
+      "post": {
+        "operationId": "EvaluationsController_cancel",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Cancel a queued or running evaluation.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/evaluations/runs/{id}/rerun": {
+      "post": {
+        "operationId": "EvaluationsController_rerun",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Queue a new run with exactly the same suite, languages, filters and parameters.",
+        "tags": [
+          "Evaluations"
+        ]
+      }
+    },
+    "/api/v1/reports/compare": {
+      "get": {
+        "operationId": "ReportsController_compare",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Compare two runs of the same benchmark suite.",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/api/v1/reports/{runId}": {
+      "get": {
+        "operationId": "ReportsController_get",
+        "parameters": [
+          {
+            "name": "runId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Structured evaluation report built from stored records.",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/api/v1/reports/{runId}/export": {
+      "get": {
+        "operationId": "ReportsController_export",
+        "parameters": [
+          {
+            "name": "runId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "json",
+                "csv",
+                "markdown"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Download the report as JSON, CSV or Markdown.",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/api/v1/reports/{runId}/evidence": {
+      "get": {
+        "operationId": "ReportsController_evidence",
+        "parameters": [
+          {
+            "name": "runId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "N-ATLaS integration evidence bundle (completed, non-simulated runs only).",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/api/v1/insights/overview": {
+      "get": {
+        "operationId": "InsightsController_overview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Dashboard metrics computed from your stored evaluation records.",
+        "tags": [
+          "Insights"
+        ]
+      }
+    },
+    "/api/v1/insights/languages": {
+      "get": {
+        "operationId": "InsightsController_languages",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          },
+          {
+            "cookie": []
+          }
+        ],
+        "summary": "Per-language performance; unmeasured languages are reported as not evaluated.",
+        "tags": [
+          "Insights"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "AtlasGuard API",
+    "description": "Multilingual evaluation and reliability infrastructure for N-ATLaS (Yoruba, Hausa, Igbo, Nigerian English).\n\nAuthenticate with an API key (`Authorization: Bearer ag_…`, created in the dashboard) or a dashboard session cookie.\nSuccessful responses are wrapped as `{ \"success\": true, \"data\": … }`; errors as `{ \"success\": false, \"error\": { \"code\", \"message\", \"requestId\" } }`.\n\nN-ATLaS is an initiative of the Federal Ministry of Communications, Innovation and Digital Economy, and powered by Awarri Technologies.",
+    "version": "0.1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "description": "AtlasGuard API key (ag_…)"
+      },
+      "cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "ag_session"
+      }
+    },
+    "schemas": {
+      "UpdateProfileDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "SubmitFeedbackDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 254,
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "description": "At least 8 characters.",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "password"
+        ]
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "maxLength": 254,
+            "format": "email"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "CreateApiKeyDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the AI application being evaluated.",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "UpdateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the AI application being evaluated.",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      },
+      "ImportBenchmarkDto": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "A dataset in AtlasGuard benchmark format (formatVersion 1)."
+          },
+          "dryRun": {
+            "type": "boolean",
+            "description": "Validate only; nothing is saved."
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Administrators only: import as an official AtlasGuard suite."
+          }
+        },
+        "required": [
+          "dataset"
+        ]
+      },
+      "ReviewCaseDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "VERIFIED",
+              "REJECTED",
+              "PENDING_REVIEW"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "attestation": {
+            "type": "boolean",
+            "description": "Required for VERIFIED: the reviewer confirms they are fluent in the case language and\nchecked the prompt, translation and reference facts."
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "InferenceParametersDto": {
+        "type": "object",
+        "properties": {
+          "temperature": {
+            "type": "number",
+            "description": "Sampling temperature; the N-ATLaS model card recommends 0.1.",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "maxTokens": {
+            "type": "number",
+            "minimum": 16,
+            "maximum": 2048
+          },
+          "topP": {
+            "type": "number",
+            "minimum": 0.05,
+            "maximum": 1
+          },
+          "repetitionPenalty": {
+            "type": "number",
+            "description": "The N-ATLaS model card recommends 1.12.",
+            "minimum": 1,
+            "maximum": 2
+          },
+          "seed": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "systemPrompt": {
+            "type": "string",
+            "description": "Overrides the default system prompt. Send an empty string for no system prompt.",
+            "maxLength": 2000
+          }
+        }
+      },
+      "CreateRunDto": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "suiteId": {
+            "type": "string",
+            "description": "Benchmark suite id.",
+            "format": "uuid"
+          },
+          "languages": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": [
+                "en-NG",
+                "yo",
+                "ha",
+                "ig"
+              ]
+            }
+          },
+          "categories": {
+            "type": "array",
+            "description": "Restrict to these categories.",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "financial_terminology",
+                "nigerian_english",
+                "education",
+                "civic_information",
+                "cultural_context",
+                "translation_meaning"
+              ]
+            }
+          },
+          "caseIds": {
+            "description": "Run only these cases (ids from GET /benchmarks/:id/cases).",
+            "uniqueItems": true,
+            "minItems": 1,
+            "maxItems": 1000,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "onlyVerified": {
+            "type": "boolean",
+            "description": "Only include cases whose content has been verified by a reviewer."
+          },
+          "modelConfigurationId": {
+            "type": "string",
+            "description": "Defaults to the system N-ATLaS configuration.",
+            "format": "uuid"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/InferenceParametersDto"
+          }
+        },
+        "required": [
+          "projectId",
+          "suiteId",
+          "languages"
+        ]
+      },
+      "ReviewResultDto": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "enum": [
+              "PASSED",
+              "FAILED"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      }
+    }
+  }
+}

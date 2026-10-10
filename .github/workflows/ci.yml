@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: atlasguard
+          POSTGRES_PASSWORD: atlasguard
+          POSTGRES_DB: atlasguard_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U atlasguard"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://atlasguard:atlasguard@localhost:5432/atlasguard_ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:packages
+      - run: pnpm --filter @atlasguard/api exec prisma generate
+      - run: pnpm typecheck
+      - run: pnpm benchmarks:validate
+      - run: pnpm test
+
+  inference-service:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/natlas-inference
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q tests/test_api.py
+      - name: Notebook is in sync with the service source
+        run: python scripts/build_notebook.py && git diff --exit-code notebooks/

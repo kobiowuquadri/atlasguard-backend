@@ -1,0 +1,59 @@
+# Local stack with Docker:  docker compose up -d
+# GPU host with N-ATLaS:    HF_TOKEN=hf_... NATLAS_API_KEY=$(openssl rand -hex 32) docker compose --profile gpu up -d
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: atlasguard
+      POSTGRES_PASSWORD: atlasguard
+      POSTGRES_DB: atlasguard
+      POSTGRES_INITDB_ARGS: --encoding=UTF8
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atlasguard"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # development mode so the plain-HTTP localhost cookie works; use production settings when deploying
+      NODE_ENV: development
+      DATABASE_URL: postgresql://atlasguard:atlasguard@postgres:5432/atlasguard
+      APP_ORIGINS: http://localhost:3000
+      API_KEY_PEPPER: local-compose-pepper-change-me-0123456789
+      NATLAS_BASE_URL: ${NATLAS_BASE_URL:-}
+      NATLAS_API_KEY: ${NATLAS_API_KEY:-}
+    ports:
+      - "4000:4000"
+
+  natlas-inference:
+    profiles: ["gpu"]
+    build: services/natlas-inference
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+      INFERENCE_API_KEY: ${NATLAS_API_KEY:-}
+      NATLAS_REVISION: e294476928aca9030e924ca27bb8e085e8581273
+    volumes:
+      - natlas-cache:/models
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  pgdata: {}
+  natlas-cache: {}

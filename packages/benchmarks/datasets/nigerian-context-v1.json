@@ -1,0 +1,1664 @@
+{
+  "$schema": "../schemas/benchmark-dataset.schema.json",
+  "formatVersion": 1,
+  "suite": {
+    "slug": "nigerian-context-v1",
+    "name": "Nigerian Context Benchmark",
+    "version": "1.0.0",
+    "visibility": "public",
+    "description": "Equivalent questions in Nigerian English, Yoruba, Hausa and Igbo covering financial terminology, Nigerian English, education, civic information, cultural context and meaning preservation. All content is an AI-assisted draft pending review by fluent speakers; no case is verified yet."
+  },
+  "semanticGroups": [
+    {
+      "key": "transfer-fee-total",
+      "title": "Bank transfer total with fee",
+      "category": "financial_terminology",
+      "expectedFacts": [
+        {
+          "id": "total-deducted",
+          "type": "numeric",
+          "required": true,
+          "description": "The total deducted is ₦5,050 (₦5,000 transfer plus ₦50 fee).",
+          "value": 5050,
+          "unit": "NGN",
+          "ignoreValues": [
+            5000,
+            50
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "transfer-fee-total.en-NG",
+          "language": "en-NG",
+          "title": "Bank transfer total with fee (Nigerian English)",
+          "prompt": "If you transfer ₦5,000 to another bank account and your bank charges a ₦50 transfer fee, what is the total amount deducted from your account? State the amount in naira.",
+          "difficulty": "easy",
+          "tags": [
+            "banking",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "transfer-fee-total.yo",
+          "language": "yo",
+          "title": "Bank transfer total with fee (Yoruba)",
+          "prompt": "Tí o bá fi ₦5,000 ránṣẹ́ sí àkáǹtì báǹkì mìíràn, tí báǹkì rẹ sì gba ₦50 gẹ́gẹ́ bí owó ìfiránṣẹ́, èló ni àpapọ̀ owó tí wọ́n máa yọ kúrò nínú àkáǹtì rẹ? Sọ iye náà ní náírà.",
+          "difficulty": "easy",
+          "tags": [
+            "banking",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "transfer-fee-total.ha",
+          "language": "ha",
+          "title": "Bank transfer total with fee (Hausa)",
+          "prompt": "Idan ka tura ₦5,000 zuwa wani asusun banki, kuma bankinka ya caje ka ₦50 a matsayin kuɗin tura, nawa ne jimillar kuɗin da za a cire daga asusunka? Faɗi adadin a naira.",
+          "difficulty": "easy",
+          "tags": [
+            "banking",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "transfer-fee-total.ig",
+          "language": "ig",
+          "title": "Bank transfer total with fee (Igbo)",
+          "prompt": "Ọ bụrụ na i zigara ₦5,000 n'akaụntụ ụlọ akụ ọzọ, ụlọ akụ gị wee gbaa gị ₦50 dịka ụgwọ nzipu, ego ole ka a ga-ewepụ n'akaụntụ gị n'ozuzu? Kwuo ego ahụ na naira.",
+          "difficulty": "easy",
+          "tags": [
+            "banking",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ],
+      "description": "Arithmetic on a common Nigerian banking scenario; the total must be identical in every language."
+    },
+    {
+      "key": "savings-interest",
+      "title": "Simple interest on savings",
+      "category": "financial_terminology",
+      "expectedFacts": [
+        {
+          "id": "interest-earned",
+          "type": "numeric",
+          "required": true,
+          "description": "Simple interest at 10% per year on ₦20,000 for one year is ₦2,000.",
+          "value": 2000,
+          "unit": "NGN",
+          "ignoreValues": [
+            10,
+            20000,
+            1,
+            22000
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "savings-interest.en-NG",
+          "language": "en-NG",
+          "title": "Simple interest on savings (Nigerian English)",
+          "prompt": "A savings account pays 10% simple interest per year. If you deposit ₦20,000 and leave it in the account for one year, how much interest will you earn in naira?",
+          "difficulty": "medium",
+          "tags": [
+            "savings",
+            "interest",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "savings-interest.yo",
+          "language": "yo",
+          "title": "Simple interest on savings (Yoruba)",
+          "prompt": "Àkáǹtì ìfowópamọ́ kan ń san èlé 10% lọ́dún. Tí o bá fi ₦20,000 sínú rẹ̀, tí o sì fi sílẹ̀ fún ọdún kan, èló ni èlé tí o máa rí gbà ní náírà?",
+          "difficulty": "medium",
+          "tags": [
+            "savings",
+            "interest",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "savings-interest.ha",
+          "language": "ha",
+          "title": "Simple interest on savings (Hausa)",
+          "prompt": "Asusun ajiya yana biyan ribar 10% a kowace shekara. Idan ka saka ₦20,000 ka bar shi a cikin asusun na shekara ɗaya, nawa ne ribar da za ka samu a naira?",
+          "difficulty": "medium",
+          "tags": [
+            "savings",
+            "interest",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "savings-interest.ig",
+          "language": "ig",
+          "title": "Simple interest on savings (Igbo)",
+          "prompt": "Akaụntụ nchekwa na-akwụ ọmụrụnwa 10% kwa afọ. Ọ bụrụ na i tinye ₦20,000 ma hapụ ya n'akaụntụ ahụ otu afọ, ego ole ka ị ga-enweta dịka ọmụrụnwa na naira?",
+          "difficulty": "medium",
+          "tags": [
+            "savings",
+            "interest",
+            "arithmetic"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "go-slow-meaning",
+      "title": "Meaning of \"go-slow\"",
+      "category": "nigerian_english",
+      "expectedFacts": [
+        {
+          "id": "traffic-jam",
+          "type": "concept",
+          "required": true,
+          "description": "In Nigerian English, \"go-slow\" means a traffic jam or slow-moving traffic.",
+          "evidence": {
+            "en-NG": [
+              "traffic",
+              "traffic jam",
+              "hold-up",
+              "congestion",
+              "slow-moving vehicles",
+              "slow moving traffic",
+              "gridlock"
+            ],
+            "yo": [
+              "súnkẹrẹ-fàkẹrẹ",
+              "sunkere fakere",
+              "ọkọ̀",
+              "traffic",
+              "ọ̀nà dí",
+              "ìdènà ọ̀nà"
+            ],
+            "ha": [
+              "cunkoso",
+              "cunkoson ababen hawa",
+              "ababen hawa",
+              "motoci",
+              "traffic"
+            ],
+            "ig": [
+              "mkpọchi ụzọ",
+              "ụgbọala",
+              "ụgbọ ala",
+              "okporo ụzọ",
+              "traffic"
+            ]
+          },
+          "contradictions": {
+            "en-NG": [
+              "industrial action",
+              "work slowdown",
+              "slowing down work",
+              "workers deliberately"
+            ]
+          }
+        }
+      ],
+      "cases": [
+        {
+          "key": "go-slow-meaning.en-NG",
+          "language": "en-NG",
+          "title": "Meaning of \"go-slow\" (Nigerian English)",
+          "prompt": "In Nigerian English, what does the expression \"go-slow\" mean? Answer in one or two sentences.",
+          "difficulty": "easy",
+          "tags": [
+            "idiom",
+            "transport"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 80
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "go-slow-meaning.yo",
+          "language": "yo",
+          "title": "Meaning of \"go-slow\" (Yoruba)",
+          "prompt": "Nínú èdè Gẹ̀ẹ́sì tí wọ́n ń sọ ní Nàìjíríà, kí ni ọ̀rọ̀ náà \"go-slow\" túmọ̀ sí? Dáhùn ní gbólóhùn kan tàbí méjì ní èdè Yorùbá.",
+          "difficulty": "easy",
+          "tags": [
+            "idiom",
+            "transport"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 80
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "go-slow-meaning.ha",
+          "language": "ha",
+          "title": "Meaning of \"go-slow\" (Hausa)",
+          "prompt": "A Turancin da ake magana a Najeriya, mene ne ma'anar kalmar \"go-slow\"? Ka amsa da jimla ɗaya ko biyu a Hausa.",
+          "difficulty": "easy",
+          "tags": [
+            "idiom",
+            "transport"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 80
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "go-slow-meaning.ig",
+          "language": "ig",
+          "title": "Meaning of \"go-slow\" (Igbo)",
+          "prompt": "N'asụsụ Bekee a na-asụ na Naịjirịa, gịnị ka okwu a bụ \"go-slow\" pụtara? Zaa n'otu ahịrịokwu ma ọ bụ abụọ n'asụsụ Igbo.",
+          "difficulty": "easy",
+          "tags": [
+            "idiom",
+            "transport"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 80
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ],
+      "description": "Nigerian English usage differs from British English, where \"go-slow\" means industrial action."
+    },
+    {
+      "key": "flash-me-meaning",
+      "title": "Meaning of \"flash me\"",
+      "category": "nigerian_english",
+      "expectedFacts": [
+        {
+          "id": "missed-call",
+          "type": "concept",
+          "required": true,
+          "description": "\"Flash me\" asks you to ring the person's phone briefly and hang up before they answer (a missed call), usually so they can call back.",
+          "evidence": {
+            "en-NG": [
+              "missed call",
+              "hang up",
+              "ring my phone",
+              "ring once",
+              "call back",
+              "call me briefly",
+              "beep"
+            ],
+            "yo": [
+              "missed call",
+              "pè mí padà",
+              "pè wọ́n",
+              "fóònù",
+              "ìpè"
+            ],
+            "ha": [
+              "missed call",
+              "kira",
+              "kiran waya",
+              "wayarsa",
+              "sake kira"
+            ],
+            "ig": [
+              "missed call",
+              "kpọọ m",
+              "kpọọ ya",
+              "ekwentị",
+              "kpọọ"
+            ]
+          }
+        }
+      ],
+      "cases": [
+        {
+          "key": "flash-me-meaning.en-NG",
+          "language": "en-NG",
+          "title": "Meaning of \"flash me\" (Nigerian English)",
+          "prompt": "In Nigerian English, when someone says \"flash me\", what are they asking you to do?",
+          "difficulty": "medium",
+          "tags": [
+            "idiom",
+            "telecoms"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "flash-me-meaning.yo",
+          "language": "yo",
+          "title": "Meaning of \"flash me\" (Yoruba)",
+          "prompt": "Nínú èdè Gẹ̀ẹ́sì Nàìjíríà, tí ẹnìkan bá sọ pé \"flash me\", kí ni wọ́n ń ní kí o ṣe? Dáhùn ní èdè Yorùbá.",
+          "difficulty": "medium",
+          "tags": [
+            "idiom",
+            "telecoms"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "flash-me-meaning.ha",
+          "language": "ha",
+          "title": "Meaning of \"flash me\" (Hausa)",
+          "prompt": "A Turancin Najeriya, idan wani ya ce \"flash me\", me yake roƙonka ka yi? Ka amsa a Hausa.",
+          "difficulty": "medium",
+          "tags": [
+            "idiom",
+            "telecoms"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "flash-me-meaning.ig",
+          "language": "ig",
+          "title": "Meaning of \"flash me\" (Igbo)",
+          "prompt": "N'asụsụ Bekee Naịjirịa, ọ bụrụ na mmadụ asị \"flash me\", gịnị ka ọ na-arịọ gị ka ị mee? Zaa n'asụsụ Igbo.",
+          "difficulty": "medium",
+          "tags": [
+            "idiom",
+            "telecoms"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "rectangle-area",
+      "title": "Area of a classroom floor",
+      "category": "education",
+      "expectedFacts": [
+        {
+          "id": "area",
+          "type": "numeric",
+          "required": true,
+          "description": "Area = 8 m × 6 m = 48 square metres.",
+          "value": 48,
+          "unit": "m²",
+          "ignoreValues": [
+            8,
+            6,
+            2
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "rectangle-area.en-NG",
+          "language": "en-NG",
+          "title": "Area of a classroom floor (Nigerian English)",
+          "prompt": "A classroom floor is 8 metres long and 6 metres wide. What is its area in square metres? Show your working.",
+          "difficulty": "easy",
+          "tags": [
+            "mathematics",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "rectangle-area.yo",
+          "language": "yo",
+          "title": "Area of a classroom floor (Yoruba)",
+          "prompt": "Ilẹ̀ yàrá ìkẹ́kọ̀ọ́ kan gùn ní mítà 8, ó sì fẹ̀ ní mítà 6. Kí ni àyè rẹ̀ (area) ní square metres? Fi bí o ṣe ṣírò rẹ̀ hàn.",
+          "difficulty": "easy",
+          "tags": [
+            "mathematics",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "rectangle-area.ha",
+          "language": "ha",
+          "title": "Area of a classroom floor (Hausa)",
+          "prompt": "Benen aji yana da tsawon mita 8 da faɗin mita 6. Mene ne fadinsa (area) a murabba'in mita? Nuna yadda ka yi lissafin.",
+          "difficulty": "easy",
+          "tags": [
+            "mathematics",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "rectangle-area.ig",
+          "language": "ig",
+          "title": "Area of a classroom floor (Igbo)",
+          "prompt": "Ala ụlọ klaasị dị mita 8 n'ogologo na mita 6 n'obosara. Gịnị bụ mpaghara ya (area) na square metres? Gosi otu i si gbakọọ ya.",
+          "difficulty": "easy",
+          "tags": [
+            "mathematics",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "water-boiling-point",
+      "title": "Boiling point of water",
+      "category": "education",
+      "expectedFacts": [
+        {
+          "id": "boiling-point",
+          "type": "numeric",
+          "required": true,
+          "description": "Pure water boils at 100 °C at sea level (standard atmospheric pressure).",
+          "value": 100,
+          "unit": "°C",
+          "ignoreValues": []
+        }
+      ],
+      "cases": [
+        {
+          "key": "water-boiling-point.en-NG",
+          "language": "en-NG",
+          "title": "Boiling point of water (Nigerian English)",
+          "prompt": "At sea level, at what temperature in degrees Celsius does pure water boil?",
+          "difficulty": "easy",
+          "tags": [
+            "science",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review.",
+            "sourceReference": "Standard physical constant: 100 °C at 1 standard atmosphere."
+          }
+        },
+        {
+          "key": "water-boiling-point.yo",
+          "language": "yo",
+          "title": "Boiling point of water (Yoruba)",
+          "prompt": "Ní ìpele òkun (sea level), ní ìwọ̀n ìgbóná mélòó ní Celsius ni omi mímọ́ máa ń hó?",
+          "difficulty": "easy",
+          "tags": [
+            "science",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified.",
+            "sourceReference": "Standard physical constant: 100 °C at 1 standard atmosphere."
+          }
+        },
+        {
+          "key": "water-boiling-point.ha",
+          "language": "ha",
+          "title": "Boiling point of water (Hausa)",
+          "prompt": "A matakin teku (sea level), a wane zafi na ma'aunin Celsius ne ruwa mai tsabta yake tafasa?",
+          "difficulty": "easy",
+          "tags": [
+            "science",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified.",
+            "sourceReference": "Standard physical constant: 100 °C at 1 standard atmosphere."
+          }
+        },
+        {
+          "key": "water-boiling-point.ig",
+          "language": "ig",
+          "title": "Boiling point of water (Igbo)",
+          "prompt": "N'ogo oke osimiri (sea level), n'ogo okpomọkụ ole na Celsius ka mmiri dị ọcha na-esi?",
+          "difficulty": "easy",
+          "tags": [
+            "science",
+            "primary"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified.",
+            "sourceReference": "Standard physical constant: 100 °C at 1 standard atmosphere."
+          }
+        }
+      ]
+    },
+    {
+      "key": "capital-of-nigeria",
+      "title": "Capital city of Nigeria",
+      "category": "civic_information",
+      "expectedFacts": [
+        {
+          "id": "capital",
+          "type": "entity",
+          "required": true,
+          "description": "The capital city of Nigeria is Abuja (capital since 1991, replacing Lagos).",
+          "accepted": [
+            "Abuja",
+            "Federal Capital Territory"
+          ],
+          "conflicting": [
+            "Lagos",
+            "Kano",
+            "Ibadan",
+            "Port Harcourt"
+          ],
+          "conflictingByLanguage": {
+            "yo": [
+              "Èkó"
+            ],
+            "ha": [
+              "Legas"
+            ]
+          }
+        }
+      ],
+      "cases": [
+        {
+          "key": "capital-of-nigeria.en-NG",
+          "language": "en-NG",
+          "title": "Capital city of Nigeria (Nigerian English)",
+          "prompt": "What is the capital city of Nigeria?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "geography"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 298."
+          }
+        },
+        {
+          "key": "capital-of-nigeria.yo",
+          "language": "yo",
+          "title": "Capital city of Nigeria (Yoruba)",
+          "prompt": "Kí ni olú-ìlú orílẹ̀-èdè Nàìjíríà?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "geography"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 298."
+          }
+        },
+        {
+          "key": "capital-of-nigeria.ha",
+          "language": "ha",
+          "title": "Capital city of Nigeria (Hausa)",
+          "prompt": "Mene ne babban birnin tarayyar Najeriya?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "geography"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 298."
+          }
+        },
+        {
+          "key": "capital-of-nigeria.ig",
+          "language": "ig",
+          "title": "Capital city of Nigeria (Igbo)",
+          "prompt": "Kedu obodo bụ isi obodo Naịjirịa?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "geography"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 298."
+          }
+        }
+      ]
+    },
+    {
+      "key": "states-in-nigeria",
+      "title": "Number of states in Nigeria",
+      "category": "civic_information",
+      "expectedFacts": [
+        {
+          "id": "state-count",
+          "type": "numeric",
+          "required": true,
+          "description": "Nigeria has 36 states, in addition to the Federal Capital Territory.",
+          "value": 36,
+          "ignoreValues": [],
+          "acceptedPhrases": {
+            "yo": [
+              "mẹ́rìndínlógójì"
+            ],
+            "ha": [
+              "talatin da shida"
+            ],
+            "ig": [
+              "iri atọ na isii"
+            ]
+          }
+        }
+      ],
+      "cases": [
+        {
+          "key": "states-in-nigeria.en-NG",
+          "language": "en-NG",
+          "title": "Number of states in Nigeria (Nigerian English)",
+          "prompt": "How many states does Nigeria have, not counting the Federal Capital Territory?",
+          "difficulty": "easy",
+          "tags": [
+            "civics"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 3 and First Schedule."
+          }
+        },
+        {
+          "key": "states-in-nigeria.yo",
+          "language": "yo",
+          "title": "Number of states in Nigeria (Yoruba)",
+          "prompt": "Ìpínlẹ̀ mélòó ni ó wà ní Nàìjíríà, láìka Agbègbè Olú-ìlú Ìjọba Àpapọ̀ (FCT) mọ́ ọn?",
+          "difficulty": "easy",
+          "tags": [
+            "civics"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 3 and First Schedule."
+          }
+        },
+        {
+          "key": "states-in-nigeria.ha",
+          "language": "ha",
+          "title": "Number of states in Nigeria (Hausa)",
+          "prompt": "Jihohi nawa ne Najeriya take da su, ba tare da ƙirga Babban Birnin Tarayya (FCT) ba?",
+          "difficulty": "easy",
+          "tags": [
+            "civics"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 3 and First Schedule."
+          }
+        },
+        {
+          "key": "states-in-nigeria.ig",
+          "language": "ig",
+          "title": "Number of states in Nigeria (Igbo)",
+          "prompt": "Steeti ole dị na Naịjirịa, ma ọ bụrụ na agụghị Federal Capital Territory (FCT)?",
+          "difficulty": "easy",
+          "tags": [
+            "civics"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified.",
+            "sourceReference": "Constitution of the Federal Republic of Nigeria 1999, section 3 and First Schedule."
+          }
+        }
+      ]
+    },
+    {
+      "key": "independence-year",
+      "title": "Year of Nigerian independence",
+      "category": "civic_information",
+      "expectedFacts": [
+        {
+          "id": "independence-year",
+          "type": "numeric",
+          "required": true,
+          "description": "Nigeria gained independence from Britain on 1 October 1960.",
+          "value": 1960,
+          "unit": "year",
+          "ignoreValues": []
+        }
+      ],
+      "cases": [
+        {
+          "key": "independence-year.en-NG",
+          "language": "en-NG",
+          "title": "Year of Nigerian independence (Nigerian English)",
+          "prompt": "In what year did Nigeria gain independence from Britain?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "history"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review.",
+            "sourceReference": "Nigeria Independence Act 1960 (United Kingdom); independence on 1 October 1960."
+          }
+        },
+        {
+          "key": "independence-year.yo",
+          "language": "yo",
+          "title": "Year of Nigerian independence (Yoruba)",
+          "prompt": "Ọdún wo ni Nàìjíríà gba òmìnira lọ́wọ́ ìjọba Gẹ̀ẹ́sì?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "history"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified.",
+            "sourceReference": "Nigeria Independence Act 1960 (United Kingdom); independence on 1 October 1960."
+          }
+        },
+        {
+          "key": "independence-year.ha",
+          "language": "ha",
+          "title": "Year of Nigerian independence (Hausa)",
+          "prompt": "A wace shekara ne Najeriya ta samu 'yancin kai daga Birtaniya?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "history"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified.",
+            "sourceReference": "Nigeria Independence Act 1960 (United Kingdom); independence on 1 October 1960."
+          }
+        },
+        {
+          "key": "independence-year.ig",
+          "language": "ig",
+          "title": "Year of Nigerian independence (Igbo)",
+          "prompt": "N'afọ ole ka Naịjirịa nwetara nnwere onwe site n'aka ndị Britain?",
+          "difficulty": "easy",
+          "tags": [
+            "civics",
+            "history"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified.",
+            "sourceReference": "Nigeria Independence Act 1960 (United Kingdom); independence on 1 October 1960."
+          }
+        }
+      ]
+    },
+    {
+      "key": "yoruba-good-morning",
+      "title": "Yoruba morning greeting",
+      "category": "cultural_context",
+      "expectedFacts": [
+        {
+          "id": "greeting",
+          "type": "entity",
+          "required": true,
+          "description": "The common Yoruba morning greeting is \"Ẹ káàárọ̀\" (or \"Káàárọ̀\" to a peer).",
+          "accepted": [
+            "Ẹ káàárọ̀",
+            "káàárọ̀",
+            "ẹ kú àárọ̀",
+            "kú àárọ̀"
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "yoruba-good-morning.en-NG",
+          "language": "en-NG",
+          "title": "Yoruba morning greeting (Nigerian English)",
+          "prompt": "What is the common Yoruba greeting for \"good morning\"?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "yoruba-good-morning.yo",
+          "language": "yo",
+          "title": "Yoruba morning greeting (Yoruba)",
+          "prompt": "Kí ni ìkíni Yorùbá tí a máa ń lò láti sọ \"good morning\"?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "yoruba-good-morning.ha",
+          "language": "ha",
+          "title": "Yoruba morning greeting (Hausa)",
+          "prompt": "Mene ne gaisuwar Yarbanci da ake yi da safe don a ce \"good morning\"?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "yoruba-good-morning.ig",
+          "language": "ig",
+          "title": "Yoruba morning greeting (Igbo)",
+          "prompt": "Kedu ekele ndị Yoruba na-ekele n'ụtụtụ iji kwuo \"good morning\"?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "hausa-thank-you",
+      "title": "\"Thank you\" in Hausa",
+      "category": "cultural_context",
+      "expectedFacts": [
+        {
+          "id": "thank-you",
+          "type": "entity",
+          "required": true,
+          "description": "\"Thank you\" in Hausa is \"Na gode\".",
+          "accepted": [
+            "Na gode",
+            "Nagode",
+            "mun gode"
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "hausa-thank-you.en-NG",
+          "language": "en-NG",
+          "title": "\"Thank you\" in Hausa (Nigerian English)",
+          "prompt": "How do you say \"thank you\" in Hausa?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "hausa-thank-you.yo",
+          "language": "yo",
+          "title": "\"Thank you\" in Hausa (Yoruba)",
+          "prompt": "Báwo ni a ṣe ń sọ \"ẹ ṣé\" (thank you) ní èdè Hausa?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "hausa-thank-you.ha",
+          "language": "ha",
+          "title": "\"Thank you\" in Hausa (Hausa)",
+          "prompt": "Ta yaya ake cewa \"thank you\" a harshen Hausa?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "hausa-thank-you.ig",
+          "language": "ig",
+          "title": "\"Thank you\" in Hausa (Igbo)",
+          "prompt": "Kedu ka e si ekwu \"daalụ\" (thank you) n'asụsụ Hausa?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "igbo-thank-you",
+      "title": "\"Thank you\" in Igbo",
+      "category": "cultural_context",
+      "expectedFacts": [
+        {
+          "id": "thank-you",
+          "type": "entity",
+          "required": true,
+          "description": "\"Thank you\" in Igbo is \"Daalụ\" (also \"Imela\").",
+          "accepted": [
+            "Daalụ",
+            "Imela",
+            "Ịmela",
+            "Imeela"
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "igbo-thank-you.en-NG",
+          "language": "en-NG",
+          "title": "\"Thank you\" in Igbo (Nigerian English)",
+          "prompt": "How do you say \"thank you\" in Igbo?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "igbo-thank-you.yo",
+          "language": "yo",
+          "title": "\"Thank you\" in Igbo (Yoruba)",
+          "prompt": "Báwo ni a ṣe ń sọ \"ẹ ṣé\" (thank you) ní èdè Igbo?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "igbo-thank-you.ha",
+          "language": "ha",
+          "title": "\"Thank you\" in Igbo (Hausa)",
+          "prompt": "Ta yaya ake cewa \"na gode\" (thank you) a harshen Igbo?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "igbo-thank-you.ig",
+          "language": "ig",
+          "title": "\"Thank you\" in Igbo (Igbo)",
+          "prompt": "Kedu ka e si ekwu \"thank you\" n'asụsụ Igbo?",
+          "difficulty": "easy",
+          "tags": [
+            "greetings",
+            "culture"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ]
+    },
+    {
+      "key": "translate-market-price",
+      "title": "Preserve price, name and place",
+      "category": "translation_meaning",
+      "expectedFacts": [
+        {
+          "id": "price",
+          "type": "numeric",
+          "required": true,
+          "description": "The price ₦75,000 is preserved exactly.",
+          "value": 75000,
+          "unit": "NGN",
+          "ignoreValues": []
+        },
+        {
+          "id": "buyer-name",
+          "type": "entity",
+          "required": true,
+          "description": "The name \"Amina\" is preserved.",
+          "accepted": [
+            "Amina"
+          ]
+        },
+        {
+          "id": "market-name",
+          "type": "entity",
+          "required": true,
+          "description": "The place name \"Bodija\" is preserved.",
+          "accepted": [
+            "Bodija"
+          ]
+        }
+      ],
+      "cases": [
+        {
+          "key": "translate-market-price.en-NG",
+          "language": "en-NG",
+          "title": "Preserve price, name and place (Nigerian English)",
+          "prompt": "Rewrite this sentence in simple Nigerian English for a primary school pupil. Keep every number and name exactly as written: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "entities"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 60
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "translate-market-price.yo",
+          "language": "yo",
+          "title": "Preserve price, name and place (Yoruba)",
+          "prompt": "Túmọ̀ gbólóhùn yìí sí èdè Yorùbá. Má ṣe yí nọ́ńbà tàbí orúkọ kankan padà: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "entities"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 60
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "translate-market-price.ha",
+          "language": "ha",
+          "title": "Preserve price, name and place (Hausa)",
+          "prompt": "Fassara wannan jimla zuwa harshen Hausa. Kada ka canza kowace lamba ko suna: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "entities"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 60
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "translate-market-price.ig",
+          "language": "ig",
+          "title": "Preserve price, name and place (Igbo)",
+          "prompt": "Sụgharịa ahịrịokwu a gaa n'asụsụ Igbo. Agbanwela ọnụọgụgụ ma ọ bụ aha ọ bụla: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "entities"
+          ],
+          "evaluationRules": [
+            {
+              "type": "max_words",
+              "value": 60
+            }
+          ],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ],
+      "description": "Translation must preserve numbers and named entities exactly."
+    },
+    {
+      "key": "translate-dosage",
+      "title": "Preserve medication dosage",
+      "category": "translation_meaning",
+      "expectedFacts": [
+        {
+          "id": "tablet-count",
+          "type": "numeric",
+          "required": true,
+          "description": "The dose of 2 tablets is preserved.",
+          "value": 2,
+          "ignoreValues": [
+            8,
+            5
+          ],
+          "acceptedPhrases": {
+            "yo": [
+              "méjì"
+            ],
+            "ha": [
+              "biyu"
+            ],
+            "ig": [
+              "abụọ"
+            ]
+          }
+        },
+        {
+          "id": "interval-hours",
+          "type": "numeric",
+          "required": true,
+          "description": "The interval of every 8 hours is preserved.",
+          "value": 8,
+          "ignoreValues": [
+            2,
+            5
+          ],
+          "acceptedPhrases": {
+            "yo": [
+              "mẹ́jọ"
+            ],
+            "ha": [
+              "takwas"
+            ],
+            "ig": [
+              "asatọ"
+            ]
+          }
+        },
+        {
+          "id": "duration-days",
+          "type": "numeric",
+          "required": true,
+          "description": "The duration of 5 days is preserved.",
+          "value": 5,
+          "ignoreValues": [
+            2,
+            8
+          ],
+          "acceptedPhrases": {
+            "yo": [
+              "márùn-ún"
+            ],
+            "ha": [
+              "biyar"
+            ],
+            "ig": [
+              "ise"
+            ]
+          }
+        }
+      ],
+      "cases": [
+        {
+          "key": "translate-dosage.en-NG",
+          "language": "en-NG",
+          "title": "Preserve medication dosage (Nigerian English)",
+          "prompt": "Explain this instruction to a patient in simple Nigerian English, keeping every number exactly the same: \"Take 2 tablets every 8 hours for 5 days.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "health"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "original",
+            "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+          }
+        },
+        {
+          "key": "translate-dosage.yo",
+          "language": "yo",
+          "title": "Preserve medication dosage (Yoruba)",
+          "prompt": "Túmọ̀ ìtọ́ni yìí sí èdè Yorùbá fún aláìsàn kan. Má ṣe yí nọ́ńbà kankan padà: \"Take 2 tablets every 8 hours for 5 days.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "health"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Yoruba translation; must be checked by a fluent Yoruba speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "translate-dosage.ha",
+          "language": "ha",
+          "title": "Preserve medication dosage (Hausa)",
+          "prompt": "Fassara wannan umarni zuwa Hausa domin mara lafiya. Kada ka canza kowace lamba: \"Take 2 tablets every 8 hours for 5 days.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "health"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Hausa translation; must be checked by a fluent Hausa speaker before it can be marked verified."
+          }
+        },
+        {
+          "key": "translate-dosage.ig",
+          "language": "ig",
+          "title": "Preserve medication dosage (Igbo)",
+          "prompt": "Sụgharịa ntụziaka a gaa n'asụsụ Igbo maka onye ọrịa. Agbanwela ọnụọgụgụ ọ bụla: \"Take 2 tablets every 8 hours for 5 days.\"",
+          "difficulty": "medium",
+          "tags": [
+            "translation",
+            "numbers",
+            "health"
+          ],
+          "evaluationRules": [],
+          "provenance": {
+            "sourceType": "synthetic",
+            "author": "AtlasGuard maintainers (AI-assisted draft)",
+            "reviewStatus": "pending_review",
+            "translationSource": "ai_generated",
+            "translatedFrom": "en-NG",
+            "notes": "AI-generated Igbo translation; must be checked by a fluent Igbo speaker before it can be marked verified."
+          }
+        }
+      ],
+      "description": "Changing any number in a dosage instruction changes its meaning; all three values must survive translation."
+    }
+  ],
+  "cases": [
+    {
+      "key": "pos-json-definition.en-NG",
+      "language": "en-NG",
+      "title": "Define POS as JSON",
+      "prompt": "Return only a JSON object with the keys \"term\" and \"meaning\" that explains what \"POS\" means in Nigerian banking. Do not add any other text.",
+      "difficulty": "medium",
+      "category": "financial_terminology",
+      "tags": [
+        "instruction-following",
+        "json"
+      ],
+      "requiredTerms": [
+        "point of sale"
+      ],
+      "evaluationRules": [
+        {
+          "type": "json_format",
+          "requiredKeys": [
+            "term",
+            "meaning"
+          ]
+        },
+        {
+          "type": "response_language",
+          "language": "any"
+        }
+      ],
+      "expectedFacts": [],
+      "provenance": {
+        "sourceType": "synthetic",
+        "author": "AtlasGuard maintainers (AI-assisted draft)",
+        "reviewStatus": "pending_review",
+        "translationSource": "original",
+        "notes": "Prompt and reference facts drafted with AI assistance; awaiting expert review."
+      }
+    }
+  ]
+}

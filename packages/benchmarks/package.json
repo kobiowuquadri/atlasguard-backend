@@ -1,0 +1,33 @@
+{
+  "name": "@atlasguard/benchmarks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AtlasGuard benchmark datasets, dataset JSON Schema and validation scripts.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "datasets",
+    "fixtures",
+    "schemas"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "validate": "tsx scripts/validate.ts",
+    "schema": "tsx scripts/generate-schema.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@atlasguard/shared": "workspace:*",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@atlasguard/evaluator": "workspace:*",
+    "@types/node": "24.19.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

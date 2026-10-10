@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/.next
+**/*.tsbuildinfo
+.data
+**/.env
+**/.env.*
+!**/.env.example
+services/natlas-inference/.venv
+**/__pycache__
+**/.pytest_cache
+evidence/screenshots
+.git

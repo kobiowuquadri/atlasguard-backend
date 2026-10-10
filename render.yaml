@@ -1,0 +1,44 @@
+# Render Blueprint for the AtlasGuard API + PostgreSQL (repository root = this folder).
+# The dashboard deploys separately (Vercel); N-ATLaS runs on a GPU host.
+databases:
+  - name: atlasguard-db
+    databaseName: atlasguard
+    user: atlasguard
+    plan: free
+
+services:
+  - type: web
+    name: atlasguard-api
+    runtime: node
+    plan: free
+    buildCommand: >-
+      corepack enable &&
+      pnpm install --frozen-lockfile &&
+      pnpm build:packages &&
+      pnpm --filter @atlasguard/api exec prisma generate &&
+      pnpm --filter @atlasguard/api build
+    startCommand: cd apps/api && npx prisma migrate deploy && node dist/main.js
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "24"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: atlasguard-db
+          property: connectionString
+      - key: TRUST_PROXY
+        value: "true"
+      - key: API_KEY_PEPPER
+        generateValue: true
+      - key: APP_ORIGINS
+        sync: false # e.g. https://atlasguard.vercel.app
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: NATLAS_BASE_URL
+        sync: false
+      - key: NATLAS_API_KEY
+        sync: false
+      - key: NATLAS_MODEL_REVISION
+        sync: false

@@ -1,0 +1,27 @@
+# dependencies & builds
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# environment (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# local embedded PostgreSQL data (scripts/dev-db.mjs)
+.data/
+
+# logs & OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# editor
+.idea/

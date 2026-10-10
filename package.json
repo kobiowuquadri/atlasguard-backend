@@ -1,0 +1,29 @@
+{
+  "name": "atlasguard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AtlasGuard — Engineering Trust in Nigerian AI. Multilingual evaluation and reliability infrastructure for N-ATLaS.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "pnpm -r run build",
+    "build:packages": "pnpm --filter \"./packages/**\" run build",
+    "test": "pnpm -r run test",
+    "typecheck": "pnpm -r run typecheck",
+    "db:start": "node scripts/dev-db.mjs",
+    "db:migrate": "pnpm --filter @atlasguard/api run db:migrate",
+    "db:seed": "pnpm --filter @atlasguard/api run db:seed",
+    "dev:api": "pnpm --filter @atlasguard/api run dev",
+    "benchmarks:validate": "pnpm --filter @atlasguard/benchmarks run validate",
+    "smoke:natlas": "pnpm --filter @atlasguard/api run smoke:natlas"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "embedded-postgres": "17.10.0-beta.17",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

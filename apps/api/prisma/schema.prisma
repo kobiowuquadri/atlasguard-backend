@@ -1,0 +1,418 @@
+// AtlasGuard data model.
+//
+// Design notes
+// - Evaluation history is immutable: results snapshot the prompt, facts and rules they were
+//   evaluated against, runs record benchmark version + content hash, model identity and
+//   inference parameters. Projects are archived (never hard-deleted) so runs survive.
+// - JSON columns hold genuinely variable structures (fact definitions, check results,
+//   provenance). Relationships are relational.
+// - No provider secrets are stored: model configurations point at server-side endpoint
+//   references such as "env:NATLAS".
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  DEVELOPER
+  ADMIN
+}
+
+enum SuiteVisibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum ContentReviewStatus {
+  DRAFT
+  PENDING_REVIEW
+  VERIFIED
+  REJECTED
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum ProviderType {
+  NATLAS
+  FIXTURE
+}
+
+enum RunStatus {
+  QUEUED
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum ExecutionStatus {
+  PENDING
+  RUNNING
+  DONE
+}
+
+enum Verdict {
+  PASSED
+  FAILED
+  NEEDS_REVIEW
+  SKIPPED
+  ERROR
+}
+
+enum ReviewDecision {
+  PASSED
+  FAILED
+}
+
+enum ConsistencyVerdict {
+  CONSISTENT
+  INCONSISTENT
+  NEEDS_REVIEW
+  INSUFFICIENT_DATA
+}
+
+model User {
+  id           String    @id @default(uuid()) @db.Uuid
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         UserRole  @default(DEVELOPER)
+  onboardedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  sessions     Session[]
+  projects     Project[]
+  apiKeys      ApiKey[]
+  suites       BenchmarkSuite[]
+  runs         EvaluationRun[]
+  reviews      HumanReview[]
+  caseReviews  BenchmarkCase[]  @relation("CaseReviewer")
+  feedback     BetaFeedback[]
+}
+
+model Session {
+  id         String   @id @default(uuid()) @db.Uuid
+  userId     String   @db.Uuid
+  /// SHA-256 of the opaque session token; the token itself only lives in the cookie.
+  tokenHash  String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+  userAgent  String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Project {
+  id          String    @id @default(uuid()) @db.Uuid
+  ownerId     String    @db.Uuid
+  name        String
+  description String?
+  /// Projects are archived instead of deleted so evaluation history is preserved.
+  archivedAt  DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  owner        User                 @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  modelConfigs ModelConfiguration[]
+  runs         EvaluationRun[]
+  apiKeys      ApiKey[]
+
+  @@index([ownerId, archivedAt])
+}
+
+model ModelConfiguration {
+  id                 String       @id @default(uuid()) @db.Uuid
+  /// Stable key for system-provided configurations (e.g. "system-natlas").
+  key                String?      @unique
+  /// Null for system-wide configurations.
+  projectId          String?      @db.Uuid
+  name               String
+  providerType       ProviderType
+  modelIdentifier    String
+  modelRevision      String?
+  /// Server-side endpoint reference (e.g. "env:NATLAS"). Never a secret or user-supplied URL.
+  endpointReference  String
+  supportedLanguages String[]
+  defaultParameters  Json
+  isSimulated        Boolean      @default(false)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  project Project?        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  runs    EvaluationRun[]
+
+  @@index([projectId])
+}
+
+model BenchmarkSuite {
+  id            String          @id @default(uuid()) @db.Uuid
+  /// "official" for AtlasGuard suites, "user:<id>" for user suites; scopes slug uniqueness.
+  namespace     String
+  slug          String
+  name          String
+  description   String?
+  version       String
+  visibility    SuiteVisibility @default(PRIVATE)
+  isOfficial    Boolean         @default(false)
+  ownerId       String?         @db.Uuid
+  /// SHA-256 of the canonical imported dataset, for reproducibility.
+  contentHash   String
+  formatVersion Int             @default(1)
+  archivedAt    DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  owner  User?           @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  groups SemanticGroup[]
+  cases  BenchmarkCase[]
+  runs   EvaluationRun[]
+
+  @@unique([namespace, slug, version])
+  @@index([visibility, archivedAt])
+}
+
+model SemanticGroup {
+  id            String   @id @default(uuid()) @db.Uuid
+  suiteId       String   @db.Uuid
+  key           String
+  title         String
+  description   String?
+  category      String
+  /// ExpectedFact[] shared by every language variant (see @atlasguard/shared).
+  expectedFacts Json
+  createdAt     DateTime @default(now())
+
+  suite              BenchmarkSuite      @relation(fields: [suiteId], references: [id], onDelete: Cascade)
+  cases              BenchmarkCase[]
+  consistencyResults ConsistencyResult[]
+
+  @@unique([suiteId, key])
+}
+
+model BenchmarkCase {
+  id              String              @id @default(uuid()) @db.Uuid
+  suiteId         String              @db.Uuid
+  semanticGroupId String?             @db.Uuid
+  key             String
+  title           String
+  description     String?
+  language        String
+  category        String
+  difficulty      Difficulty
+  prompt          String
+  /// Ids of the group facts that apply to this variant (resolved at import).
+  factIds         String[]
+  /// Facts of standalone cases (empty for group variants).
+  expectedFacts   Json
+  requiredTerms   String[]
+  forbiddenTerms  String[]
+  evaluationRules Json
+  provenance      Json
+  reviewStatus    ContentReviewStatus @default(DRAFT)
+  reviewedById    String?             @db.Uuid
+  reviewedAt      DateTime?
+  reviewNotes     String?
+  tags            String[]
+  revision        Int                 @default(1)
+  position        Int                 @default(0)
+  archivedAt      DateTime?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  suite         BenchmarkSuite     @relation(fields: [suiteId], references: [id], onDelete: Cascade)
+  semanticGroup SemanticGroup?     @relation(fields: [semanticGroupId], references: [id], onDelete: SetNull)
+  reviewedBy    User?              @relation("CaseReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  results       EvaluationResult[]
+
+  @@unique([suiteId, key])
+  @@index([suiteId, language])
+  @@index([semanticGroupId])
+}
+
+model EvaluationRun {
+  id                   String       @id @default(uuid()) @db.Uuid
+  projectId            String       @db.Uuid
+  createdById          String       @db.Uuid
+  benchmarkSuiteId     String       @db.Uuid
+  benchmarkVersion     String
+  benchmarkContentHash String
+  modelConfigurationId String       @db.Uuid
+  providerType         ProviderType
+  modelIdentifier      String
+  modelRevision        String?
+  /// True when the run used development fixtures; such runs are never competition evidence.
+  isSimulated          Boolean
+  /// Generation parameters and system prompt sent with every case.
+  inferenceConfig      Json
+  evaluatorVersion     String
+  languages            String[]
+  /// How cases were selected: categories, explicit case ids, verified-only.
+  selection            Json
+  status               RunStatus    @default(QUEUED)
+  totalCases           Int
+  completedCases       Int          @default(0)
+  failedCases          Int          @default(0)
+  summary              Json?
+  /// Model details reported by the provider when the run started.
+  providerMetadata     Json?
+  errorDetails         Json?
+  cancelRequestedAt    DateTime?
+  lockedBy             String?
+  heartbeatAt          DateTime?
+  attempts             Int          @default(0)
+  queuedAt             DateTime     @default(now())
+  startedAt            DateTime?
+  completedAt          DateTime?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+
+  project            Project             @relation(fields: [projectId], references: [id], onDelete: Restrict)
+  createdBy          User                @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  suite              BenchmarkSuite      @relation(fields: [benchmarkSuiteId], references: [id], onDelete: Restrict)
+  modelConfiguration ModelConfiguration  @relation(fields: [modelConfigurationId], references: [id], onDelete: Restrict)
+  results            EvaluationResult[]
+  consistencyResults ConsistencyResult[]
+
+  @@index([projectId, createdAt])
+  @@index([status, queuedAt])
+}
+
+model EvaluationResult {
+  id                  String          @id @default(uuid()) @db.Uuid
+  evaluationRunId     String          @db.Uuid
+  benchmarkCaseId     String          @db.Uuid
+  semanticGroupId     String?         @db.Uuid
+  caseKey             String
+  language            String
+  category            String
+  /// Exact prompt sent to the model.
+  prompt              String
+  /// Facts, rules, terms, revision and review status of the case at execution time.
+  caseSnapshot        Json
+  executionStatus     ExecutionStatus @default(PENDING)
+  attempts            Int             @default(0)
+  /// Exact text returned by the model provider.
+  response            String?
+  /// Round trip measured by AtlasGuard (request start → complete response).
+  responseTimeMs      Int?
+  /// Generation time reported by the provider, when available.
+  providerInferenceMs Int?
+  requestId           String?
+  providerRequestId   String?
+  responseMetadata    Json?
+  /// Automated verdict produced by the evaluator.
+  verdict             Verdict?
+  /// Verdict after human review; equals `verdict` until a reviewer decides.
+  finalVerdict        Verdict?
+  checks              Json?
+  factChecks          Json?
+  languageDetection   Json?
+  summary             String?
+  requiresReview      Boolean         @default(false)
+  errorDetails        Json?
+  startedAt           DateTime?
+  executedAt          DateTime?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  run     EvaluationRun @relation(fields: [evaluationRunId], references: [id], onDelete: Cascade)
+  case    BenchmarkCase @relation(fields: [benchmarkCaseId], references: [id], onDelete: Restrict)
+  reviews HumanReview[]
+
+  @@unique([evaluationRunId, benchmarkCaseId])
+  @@index([evaluationRunId, executionStatus])
+  @@index([evaluationRunId, language])
+  @@index([evaluationRunId, finalVerdict])
+}
+
+model ConsistencyResult {
+  id                String             @id @default(uuid()) @db.Uuid
+  evaluationRunId   String             @db.Uuid
+  semanticGroupId   String             @db.Uuid
+  semanticGroupKey  String
+  title             String
+  category          String
+  languagesCompared String[]
+  languagesMissing  String[]
+  findings          Json
+  summary           Json
+  verdict           ConsistencyVerdict
+  method            String
+  evaluatorVersion  String
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  run   EvaluationRun @relation(fields: [evaluationRunId], references: [id], onDelete: Cascade)
+  group SemanticGroup @relation(fields: [semanticGroupId], references: [id], onDelete: Restrict)
+
+  @@unique([evaluationRunId, semanticGroupId])
+}
+
+model HumanReview {
+  id                 String         @id @default(uuid()) @db.Uuid
+  evaluationResultId String         @db.Uuid
+  reviewerId         String         @db.Uuid
+  decision           ReviewDecision
+  previousVerdict    Verdict?
+  notes              String?
+  reviewedAt         DateTime       @default(now())
+
+  result   EvaluationResult @relation(fields: [evaluationResultId], references: [id], onDelete: Cascade)
+  reviewer User             @relation(fields: [reviewerId], references: [id], onDelete: Restrict)
+
+  @@index([evaluationResultId])
+}
+
+model ApiKey {
+  id         String    @id @default(uuid()) @db.Uuid
+  userId     String    @db.Uuid
+  /// When set, the key can only access this project.
+  projectId  String?   @db.Uuid
+  name       String
+  /// First characters of the key, shown so users can recognise it.
+  keyPrefix  String
+  /// HMAC-SHA256 of the full key (peppered); the plaintext key is shown once.
+  keyHash    String    @unique
+  lastUsedAt DateTime?
+  revokedAt  DateTime?
+  createdAt  DateTime  @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model BetaFeedback {
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String?  @db.Uuid
+  testerIdentifier    String
+  developerBackground String?
+  projectVersion      String
+  testedFeatures      String[]
+  easeOfUseRating     Int?
+  mostUsefulFeature   String?
+  problemsEncountered String?
+  suggestions         String?
+  overallAssessment   String
+  consentRecorded     Boolean
+  createdAt           DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+}
