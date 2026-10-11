@@ -1,0 +1,1279 @@
+{
+  "kind": "atlasguard.natlas-integration-evidence",
+  "formatVersion": 1,
+  "generatedAt": "2026-10-11T15:30:30.858Z",
+  "generator": {
+    "name": "AtlasGuard",
+    "apiVersion": "0.1.0"
+  },
+  "run": {
+    "id": "37665f62-6c70-48db-98cd-8b648eeb9e6b",
+    "project": "NaijaBridge AI",
+    "createdAt": "2026-10-11T14:49:21.788Z",
+    "startedAt": "2026-10-11T14:49:22.543Z",
+    "completedAt": "2026-10-11T14:55:34.149Z",
+    "providerType": "NATLAS",
+    "modelIdentifier": "NCAIR1/N-ATLaS",
+    "modelRevision": "e294476928aca9030e924ca27bb8e085e8581273",
+    "providerMetadata": {
+      "health": {
+        "status": "available",
+        "details": {
+          "error": null,
+          "status": "ready",
+          "model_id": "NCAIR1/N-ATLaS",
+          "model_loaded": true,
+          "uptime_seconds": 6520,
+          "service_version": "0.1.0"
+        },
+        "message": "N-ATLaS endpoint is reachable.",
+        "checkedAt": "2026-10-11T14:49:24.017Z",
+        "latencyMs": 254,
+        "simulated": false
+      },
+      "workerId": "srv-db534qjbc2fs73e5dr60-hibernate-69646d646f-8667t:70:13af5f7e",
+      "modelInfo": {
+        "dtype": "float16",
+        "device": "cuda x2 (Tesla T4)",
+        "runtime": "transformers 4.57.6; torch 2.11.0+cu128",
+        "revision": "e294476928aca9030e924ca27bb8e085e8581273",
+        "simulated": false,
+        "reportedBy": "provider",
+        "servedModel": "NCAIR1/N-ATLaS",
+        "providerName": "N-ATLaS (self-hosted endpoint)",
+        "providerType": "NATLAS",
+        "quantization": "none",
+        "contextLength": 131072,
+        "modelIdentifier": "NCAIR1/N-ATLaS"
+      },
+      "recordedAt": "2026-10-11T14:49:24.784Z"
+    },
+    "inferenceConfig": {
+      "seed": null,
+      "topP": null,
+      "maxTokens": 512,
+      "temperature": 0.1,
+      "systemPrompt": "you are a large language model trained by Awarri AI technologies. You are a friendly assistant and you are here to help.",
+      "repetitionPenalty": 1.12
+    },
+    "evaluatorVersion": "1.0.0",
+    "benchmark": {
+      "slug": "nigerian-context-v1",
+      "version": "1.0.0",
+      "contentHash": "654ed569168d4b9da1bcc6baebaee6e670a07bd09ae37c83bb41d3a3367bc621"
+    }
+  },
+  "statistics": {
+    "cases": 57,
+    "responses": 57,
+    "errors": 0,
+    "servedModels": [
+      "NCAIR1/N-ATLaS"
+    ]
+  },
+  "interactions": [
+    {
+      "caseKey": "transfer-fee-total.en-NG",
+      "language": "en-NG",
+      "requestId": "15b37e69-ae02-4d98-bdd4-160b10db4173",
+      "providerRequestId": "chatcmpl-127e4dfc2ef948a0af4ce40c7b1b6c7b",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:49:26.388Z",
+      "completedAt": "2026-10-11T14:49:27.812Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 116,
+        "promptTokens": 101,
+        "completionTokens": 15
+      },
+      "latencyMs": 1423,
+      "providerInferenceMs": 1158,
+      "prompt": "If you transfer ₦5,000 to another bank account and your bank charges a ₦50 transfer fee, what is the total amount deducted from your account? State the amount in naira.",
+      "response": "The total amount deducted from your account is ₦5,050.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "transfer-fee-total.yo",
+      "language": "yo",
+      "requestId": "2ee20e46-8e80-4e32-b738-5ac1dc4fdf9f",
+      "providerRequestId": "chatcmpl-748bde17504c42a587387c8adab1e899",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:49:27.813Z",
+      "completedAt": "2026-10-11T14:49:33.508Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 243,
+        "promptTokens": 177,
+        "completionTokens": 66
+      },
+      "latencyMs": 5695,
+      "providerInferenceMs": 4912,
+      "prompt": "Tí o bá fi ₦5,000 ránṣẹ́ sí àkáǹtì báǹkì mìíràn, tí báǹkì rẹ sì gba ₦50 gẹ́gẹ́ bí owó ìfiránṣẹ́, èló ni àpapọ̀ owó tí wọ́n máa yọ kúrò nínú àkáǹtì rẹ? Sọ iye náà ní náírà.",
+      "response": "Àpapọ̀ owó tí wọ́n máa yọ kúrò nínú àkáǹtì rẹ jẹ ₦4,950. Nítorí náà, ìdáhùn tó péye ni C. ₦4,950.",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "transfer-fee-total.ha",
+      "language": "ha",
+      "requestId": "73e15459-f1c5-44bc-bdd5-0e8c0d6f1785",
+      "providerRequestId": "chatcmpl-d455a294895b45e48321845a05242756",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:49:33.509Z",
+      "completedAt": "2026-10-11T14:49:35.720Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 160,
+        "promptTokens": 134,
+        "completionTokens": 26
+      },
+      "latencyMs": 2211,
+      "providerInferenceMs": 1946,
+      "prompt": "Idan ka tura ₦5,000 zuwa wani asusun banki, kuma bankinka ya caje ka ₦50 a matsayin kuɗin tura, nawa ne jimillar kuɗin da za a cire daga asusunka? Faɗi adadin a naira.",
+      "response": "Jimillar kuɗin da za a cire daga asusunka shine ₦5,050.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "transfer-fee-total.ig",
+      "language": "ig",
+      "requestId": "d1977129-3a18-4e6c-9c8f-8e9dbdc0093a",
+      "providerRequestId": "chatcmpl-030e63f443484d62af38e6db54a3e355",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:49:35.721Z",
+      "completedAt": "2026-10-11T14:49:46.421Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 293,
+        "promptTokens": 150,
+        "completionTokens": 143
+      },
+      "latencyMs": 10700,
+      "providerInferenceMs": 10444,
+      "prompt": "Ọ bụrụ na i zigara ₦5,000 n'akaụntụ ụlọ akụ ọzọ, ụlọ akụ gị wee gbaa gị ₦50 dịka ụgwọ nzipu, ego ole ka a ga-ewepụ n'akaụntụ gị n'ozuzu? Kwuo ego ahụ na naira.",
+      "response": "Ego a ga-ewepụ n'akaụntụ gị n'ozuzu bụ ₦4,950. Nke a bụ ihe kpatara ya:\n\n1. Ị malitere na ₦5,000.\n2. Ụlọ akụ na-ewe ₦50 dịka ụgwọ nzipu.\n3. Iwepụ ₦50 site na ₦5,000 na-eme ka ego fọdụrụnụ bụrụ ₦4,950.\n\nYa mere, mgbe e wepụchara ụgwọ nzipu, ozi ego ruru ₦4,950.",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "savings-interest.en-NG",
+      "language": "en-NG",
+      "requestId": "35cc6bd9-ecc8-42e6-8136-c2e8033d25d2",
+      "providerRequestId": "chatcmpl-35d57bbbf85540aa99edbfe0ca395284",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:49:46.422Z",
+      "completedAt": "2026-10-11T14:50:01.902Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 313,
+        "promptTokens": 101,
+        "completionTokens": 212
+      },
+      "latencyMs": 15480,
+      "providerInferenceMs": 15217,
+      "prompt": "A savings account pays 10% simple interest per year. If you deposit ₦20,000 and leave it in the account for one year, how much interest will you earn in naira?",
+      "response": "If you have a savings account with an annual simple interest rate of 10%, and you deposit ₦20,000 for one year, you can calculate your earnings using the formula for simple interest:\n\n\\[ \\text{Interest} = \\text{Principal} \\times \\text{Rate} \\times \\text{Time} \\]\n\nHere:\n- Principal (P) = ₦20,000\n- Rate (R) = 10% annually, or 0.10 as a decimal\n- Time (T) = 1 year\n\nSubstituting these values into the formula gives us:\n\n\\[ \\text{Interest} = 20000 \\times 0.10 \\times 1 \\] \n\n\\[ \\text{Interest} = 20000 \\times 0.10 \\]  \n\n\\[ \\text{Interest} = 2000 \\]\n\nSo, if you deposit ₦20,000 at an annual interest rate of 10%, after one year, you will earn ₦2,000 in interest.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "savings-interest.yo",
+      "language": "yo",
+      "requestId": "a51afcf5-95fc-4a00-b622-9b15994f1e6a",
+      "providerRequestId": "chatcmpl-c94a65878a1a4ce287c043d8a6e90d77",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:01.905Z",
+      "completedAt": "2026-10-11T14:50:10.757Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 264,
+        "promptTokens": 145,
+        "completionTokens": 119
+      },
+      "latencyMs": 8852,
+      "providerInferenceMs": 8585,
+      "prompt": "Àkáǹtì ìfowópamọ́ kan ń san èlé 10% lọ́dún. Tí o bá fi ₦20,000 sínú rẹ̀, tí o sì fi sílẹ̀ fún ọdún kan, èló ni èlé tí o máa rí gbà ní náírà?",
+      "response": "Tí o bá fi ₦20,000 sínú àkáǹtì ìfowópamọ́ tó ń san èlé 10% lọ́dún, tí o sì jẹ́ kí ó dákẹ́ fún ọdún kan, iwọ yóò rí èlé ₦2,000. Nítorí náà, iye tí iwọ yóò gba ní ipari ọdún yóò jẹ́ ₦22,000.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "savings-interest.ha",
+      "language": "ha",
+      "requestId": "1ec3d702-9144-4db0-adf4-17e00e6f6ca6",
+      "providerRequestId": "chatcmpl-9dd8d5b68d1e4158936289cc4de8950c",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:10.758Z",
+      "completedAt": "2026-10-11T14:50:17.889Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 221,
+        "promptTokens": 125,
+        "completionTokens": 96
+      },
+      "latencyMs": 7131,
+      "providerInferenceMs": 6819,
+      "prompt": "Asusun ajiya yana biyan ribar 10% a kowace shekara. Idan ka saka ₦20,000 ka bar shi a cikin asusun na shekara ɗaya, nawa ne ribar da za ka samu a naira?",
+      "response": "Ribar da Asusun Ajiyar Ka zai samu bayan shekara guda tare da adadin farko na ₦20,000 shine ₦2,000. Ribar 10% akan ₦20,000 yana haifar da riba ta ₦2,000. Don haka, jimlar adadin da ke cikin asusun bayan shekara guda zai kasance ₦22,000.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "savings-interest.ig",
+      "language": "ig",
+      "requestId": "c5148564-5caf-4d0f-aa68-b0a2ef8b758f",
+      "providerRequestId": "chatcmpl-daa6fbf842e14fd7af7c2bb6480be387",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:17.890Z",
+      "completedAt": "2026-10-11T14:50:25.760Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 249,
+        "promptTokens": 143,
+        "completionTokens": 106
+      },
+      "latencyMs": 7870,
+      "providerInferenceMs": 7607,
+      "prompt": "Akaụntụ nchekwa na-akwụ ọmụrụnwa 10% kwa afọ. Ọ bụrụ na i tinye ₦20,000 ma hapụ ya n'akaụntụ ahụ otu afọ, ego ole ka ị ga-enweta dịka ọmụrụnwa na naira?",
+      "response": "Ịtinye ₦20,000 na akaụntụ nchekwa na-akwụ ọmụrụnwa 10% kwa afọ ga-eme ka ị nweta ₦2,000 dịka ọmụrụnwa mgbe otu afọ gachara. Nke a pụtara na ngụkọta ego ị ga-enwe na njedebe nke afọ ga-abụ ₦22,000.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "go-slow-meaning.en-NG",
+      "language": "en-NG",
+      "requestId": "8e54429f-49ca-4a0e-b465-61a0df08d639",
+      "providerRequestId": "chatcmpl-536238e42c294307a91508df1a28e4e0",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:25.761Z",
+      "completedAt": "2026-10-11T14:50:29.727Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 136,
+        "promptTokens": 83,
+        "completionTokens": 53
+      },
+      "latencyMs": 3966,
+      "providerInferenceMs": 3702,
+      "prompt": "In Nigerian English, what does the expression \"go-slow\" mean? Answer in one or two sentences.",
+      "response": "In Nigerian English, \"go-slow\" refers to an intentional slowing down of work or pace, often used as a form of protest or resistance, usually against poor working conditions or demanding better treatment from employers. It involves reducing productivity without completely halting work.",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "go-slow-meaning.yo",
+      "language": "yo",
+      "requestId": "2a029573-16f8-41c0-b0db-06b5cb22a9a9",
+      "providerRequestId": "chatcmpl-a6b66c611d704160bd636b0e17e22629",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:29.731Z",
+      "completedAt": "2026-10-11T14:50:38.672Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 263,
+        "promptTokens": 142,
+        "completionTokens": 121
+      },
+      "latencyMs": 8941,
+      "providerInferenceMs": 8686,
+      "prompt": "Nínú èdè Gẹ̀ẹ́sì tí wọ́n ń sọ ní Nàìjíríà, kí ni ọ̀rọ̀ náà \"go-slow\" túmọ̀ sí? Dáhùn ní gbólóhùn kan tàbí méjì ní èdè Yorùbá.",
+      "response": "Ọ̀rọ̀ náà \"go-slow\" nínú èdè Gẹ̀ẹ́sì tí wọ́n ń sọ ní Nàìjíríà túmọ̀ sí ìkúnà àti ìfọwọ́sí. Nínú èdè Yorùbá, a lè fi í ṣe àpèjúwe gẹ́gẹ́ bí “ìlọ́ra” tàbí “ṣiṣé pẹ̀lú.”",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "go-slow-meaning.ha",
+      "language": "ha",
+      "requestId": "8aecbe64-ccaf-4c97-8144-30422bbbe427",
+      "providerRequestId": "chatcmpl-31eac829660d4df4bb40b3d7f8d2c613",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:38.675Z",
+      "completedAt": "2026-10-11T14:50:44.284Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 181,
+        "promptTokens": 106,
+        "completionTokens": 75
+      },
+      "latencyMs": 5610,
+      "providerInferenceMs": 5306,
+      "prompt": "A Turancin da ake magana a Najeriya, mene ne ma'anar kalmar \"go-slow\"? Ka amsa da jimla ɗaya ko biyu a Hausa.",
+      "response": "Kalmar \"go-slow\" a cikin Turanci na Najeriya tana nufin yin aiki a hankali ko kuma jinkirta aiki, yawanci ana amfani da ita wajen tattaunawa don neman karin albashi ko inganta yanayin aiki.",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "go-slow-meaning.ig",
+      "language": "ig",
+      "requestId": "0b11d341-9d32-4fc0-bfd9-f95fffa1e9b5",
+      "providerRequestId": "chatcmpl-0a0336e6950640c0aa44b407d446262a",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:44.286Z",
+      "completedAt": "2026-10-11T14:50:52.601Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 239,
+        "promptTokens": 126,
+        "completionTokens": 113
+      },
+      "latencyMs": 8315,
+      "providerInferenceMs": 8049,
+      "prompt": "N'asụsụ Bekee a na-asụ na Naịjirịa, gịnị ka okwu a bụ \"go-slow\" pụtara? Zaa n'otu ahịrịokwu ma ọ bụ abụọ n'asụsụ Igbo.",
+      "response": "Okwu \"go-slow\" nke a na-eji eme ihe n'asụsụ Bekee a na-asụ na Naịjirịa pụtara ngagharị ma ọ bụ mgbasa ozi na-aga nwayọọ nwayọọ. N'asụsụ Igbo, enwere ike ịkọwa ya dịka \"ịkwagharị nwayọọ nwayọọ\" ma ọ bụ \"ịgba nwayọọ.\"",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "flash-me-meaning.en-NG",
+      "language": "en-NG",
+      "requestId": "2e0a2104-74b9-436a-8f4d-089fb5dacaae",
+      "providerRequestId": "chatcmpl-7a6abff75d814e45afa840097ddb0910",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:52.604Z",
+      "completedAt": "2026-10-11T14:50:58.122Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 155,
+        "promptTokens": 80,
+        "completionTokens": 75
+      },
+      "latencyMs": 5518,
+      "providerInferenceMs": 5259,
+      "prompt": "In Nigerian English, when someone says \"flash me\", what are they asking you to do?",
+      "response": "In Nigerian English, when someone says \"flash me,\" they are typically asking you to show them money. This usage is informal and reflects the cultural context where money can be symbolized as something that \"flashes\" or catches attention due to its shiny appearance. So, if someone asks you to flash them, they're just jokingly inquiring about your financial status.",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "flash-me-meaning.yo",
+      "language": "yo",
+      "requestId": "a6c45f03-9ae4-44a0-9d22-edd3dd59c1d1",
+      "providerRequestId": "chatcmpl-ea59f55c34ed48aeaff9650b759c2da6",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:50:58.124Z",
+      "completedAt": "2026-10-11T14:51:08.259Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 266,
+        "promptTokens": 128,
+        "completionTokens": 138
+      },
+      "latencyMs": 10135,
+      "providerInferenceMs": 9870,
+      "prompt": "Nínú èdè Gẹ̀ẹ́sì Nàìjíríà, tí ẹnìkan bá sọ pé \"flash me\", kí ni wọ́n ń ní kí o ṣe? Dáhùn ní èdè Yorùbá.",
+      "response": "Nínú èdè Gẹ̀ẹ́sì Nàìjíríà, tí ẹnìkan bá sọ pé \"flash me,\" ó túmọ̀ sí pé wọ́n fẹ́ kí o fi ìfẹ́ tàbí àkíyèsí hàn wọn pẹ̀lú ìhòhò, nígbà míì láti orí ilé ìwòsàn. Nínú èdè Yorùbá, \"flash me\" lè jẹ́ \"fi mi han\" tàbí \"tan mi mọ́.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "flash-me-meaning.ha",
+      "language": "ha",
+      "requestId": "2d33de47-cfe1-4a50-b2d1-49813acad5b4",
+      "providerRequestId": "chatcmpl-2cb653a022aa4cb1aa83fd5fb033629a",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:08.262Z",
+      "completedAt": "2026-10-11T14:51:14.036Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 176,
+        "promptTokens": 98,
+        "completionTokens": 78
+      },
+      "latencyMs": 5773,
+      "providerInferenceMs": 5509,
+      "prompt": "A Turancin Najeriya, idan wani ya ce \"flash me\", me yake roƙonka ka yi? Ka amsa a Hausa.",
+      "response": "A cikin Turancin Najeriya, idan wani ya ce \"flash me\", yawanci yana nufin suna son ka nuna musu lambobin wayarka ko kuma lambar ID na gaggawa. Wannan kalmar tana amfani da ita ne don neman bayanan sirri nan take.",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "flash-me-meaning.ig",
+      "language": "ig",
+      "requestId": "88ec004b-21c9-4f2e-8c79-de67a762ac94",
+      "providerRequestId": "chatcmpl-95cda8ecb9c541068111547669cbf0b6",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:14.038Z",
+      "completedAt": "2026-10-11T14:51:23.093Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 242,
+        "promptTokens": 119,
+        "completionTokens": 123
+      },
+      "latencyMs": 9056,
+      "providerInferenceMs": 8788,
+      "prompt": "N'asụsụ Bekee Naịjirịa, ọ bụrụ na mmadụ asị \"flash me\", gịnị ka ọ na-arịọ gị ka ị mee? Zaa n'asụsụ Igbo.",
+      "response": "Na asụsụ Igbo, mgbe mmadụ kwuru \"flash me,\" ha na-arịọ gị ka ị pịa bọtịnụ ma ọ bụ jiri ike kpalie ya, karịchaa n'ihe metụtara ngwaọrụ eletrọnịkị dịka ekwentị ma ọ bụ laptọọpụ. Nke a bụ ntụgharị kpọmkwem maka arịrịọ ahụ n'asụsụ Igbo: \"Pịa m.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "rectangle-area.en-NG",
+      "language": "en-NG",
+      "requestId": "ba471379-d69d-42a8-b815-cca92861963a",
+      "providerRequestId": "chatcmpl-b63c2cf9db7e47bf824fc276060d0104",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:23.095Z",
+      "completedAt": "2026-10-11T14:51:27.740Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 149,
+        "promptTokens": 87,
+        "completionTokens": 62
+      },
+      "latencyMs": 4645,
+      "providerInferenceMs": 4381,
+      "prompt": "A classroom floor is 8 metres long and 6 metres wide. What is its area in square metres? Show your working.",
+      "response": "To find the area of the classroom, we need to multiply the length (8 meters) by the width (6 meters).\n\nArea = Length × Width\n\nArea = 8 m × 6 m\n\nArea = 48 square meters\n\nSo, the area of the classroom is 48 square meters.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "rectangle-area.yo",
+      "language": "yo",
+      "requestId": "dd5122be-0953-404e-a3d4-185ae694ae88",
+      "providerRequestId": "chatcmpl-ed2afcd03f354f1aba31196dcc4e40cf",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:27.741Z",
+      "completedAt": "2026-10-11T14:51:46.004Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 381,
+        "promptTokens": 133,
+        "completionTokens": 248
+      },
+      "latencyMs": 18263,
+      "providerInferenceMs": 18004,
+      "prompt": "Ilẹ̀ yàrá ìkẹ́kọ̀ọ́ kan gùn ní mítà 8, ó sì fẹ̀ ní mítà 6. Kí ni àyè rẹ̀ (area) ní square metres? Fi bí o ṣe ṣírò rẹ̀ hàn.",
+      "response": "Lati mọ iye àyè ilẹ̀ tí yàrá náà ní, a nílò láti pinnu agbára ti onigun mẹta tó dá lórí ìgboro rẹ̀ àti gígùn rẹ̀.\n\nÌtọnisọna:\nAgbara onigun mẹta = Ìgboro × Gígùn\n\nNínú àpẹẹrẹ yìí, ìgboro ilẹ̀ náà jẹ́ mítà 8, àti pé ó fẹ̀ sí mítà 6. Nítorí náà, gígùn ilẹ̀ náà jẹ́ mítà 6.\n\nBáyìí, a máa fi àwọn iye wọlé sí fọ́mùlà:\n\nAgbara = 8 mítà (ìgboro) × 6 mítà (gígùn)\n\nÀṣeyọrí:\nAgbara = 48 mita²\n\nNítorí náà, àyè ilẹ̀ yàrá náà jẹ́ 48 mita².",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "rectangle-area.ha",
+      "language": "ha",
+      "requestId": "0792d07d-4c7d-4be3-838d-4173a3d48006",
+      "providerRequestId": "chatcmpl-4b869d7da129474aa162aebfacc39bb9",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:46.005Z",
+      "completedAt": "2026-10-11T14:51:55.155Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 239,
+        "promptTokens": 114,
+        "completionTokens": 125
+      },
+      "latencyMs": 9150,
+      "providerInferenceMs": 8884,
+      "prompt": "Benen aji yana da tsawon mita 8 da faɗin mita 6. Mene ne fadinsa (area) a murabba'in mita? Nuna yadda ka yi lissafin.",
+      "response": "Don nemo fadin Benen aji, muna bukatar mu san girman rectangle, wanda shine tsawonsa ninka da fadinsa.\n\nAn bayar:\nTsawo = mita 8\nFadi = mita 6\n\nGirman = Tsawo × Fadi\n\nIdan muka maye gurbin darajar da aka bayar:\n\nGirman = mita 8 × mita 6\nGirman = mita 48\n\nSaboda haka, fadin Benen aji shine mita 48.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "rectangle-area.ig",
+      "language": "ig",
+      "requestId": "65b99043-3c12-4417-afd4-b23ea8ff1fdf",
+      "providerRequestId": "chatcmpl-3a1b510a59f541fe87008b11ae833a15",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:51:55.156Z",
+      "completedAt": "2026-10-11T14:52:11.376Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 341,
+        "promptTokens": 119,
+        "completionTokens": 222
+      },
+      "latencyMs": 16220,
+      "providerInferenceMs": 15950,
+      "prompt": "Ala ụlọ klaasị dị mita 8 n'ogologo na mita 6 n'obosara. Gịnị bụ mpaghara ya (area) na square metres? Gosi otu i si gbakọọ ya.",
+      "response": "Iji chọpụta mpaghara ala ụlọ klaasị, anyị ga-eji usoro maka mpaghara rectangle, nke bụ:\n\n\\[ \\text{Mpaghara} = \\text{Ogologo} \\times \\text{Obosara} \\]\n\nNye:\n- Ogologo (\\( L \\)) = mita 8\n- Obosara (\\( W \\)) = mita 6\n\nAnyị nwere ike ugbu a gbakọọ mpaghara ahụ site na itinye uru ndị a:\n\n\\[ \\text{Mpaghara} = 8 \\, \\text{m} \\times 6 \\, \\text{m} = 48 \\, \\text{square meters} \\]\n\nYa mere, mpaghara ala ụlọ klaasị bụ \\( 48 \\) square meters.\n\n**Azịza:** Mpaghara ala ụlọ klaasị bụ **48 square meters**.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "water-boiling-point.en-NG",
+      "language": "en-NG",
+      "requestId": "d0c9bb85-a01c-4ea9-9011-e507492eca7a",
+      "providerRequestId": "chatcmpl-56a1d4edb822462f8bbf410560d8fc52",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:11.377Z",
+      "completedAt": "2026-10-11T14:52:12.776Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 92,
+        "promptTokens": 76,
+        "completionTokens": 16
+      },
+      "latencyMs": 1399,
+      "providerInferenceMs": 1132,
+      "prompt": "At sea level, at what temperature in degrees Celsius does pure water boil?",
+      "response": "The boiling point of pure water at sea level is 100 degrees Celsius.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "water-boiling-point.yo",
+      "language": "yo",
+      "requestId": "7cc7d4fd-aa9e-49b5-9ea6-6cc7caf44eef",
+      "providerRequestId": "chatcmpl-aca4b7aca3a44a37be80e337fa5a9c33",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:12.776Z",
+      "completedAt": "2026-10-11T14:52:20.473Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 212,
+        "promptTokens": 107,
+        "completionTokens": 105
+      },
+      "latencyMs": 7697,
+      "providerInferenceMs": 7448,
+      "prompt": "Ní ìpele òkun (sea level), ní ìwọ̀n ìgbóná mélòó ní Celsius ni omi mímọ́ máa ń hó?",
+      "response": "Omi mímọ́ máa ń hó ní ìwọ̀n ìgbóná tó jẹ́ 100°C ní ìpele òkun, tàbí sea level. Èyí jẹ́ nitori pé àpapọ̀ ìtẹ̀sí àti ìmúra omi náà ní ìpele yìí dájú pé ó bá 100°C mu fún hó.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "water-boiling-point.ha",
+      "language": "ha",
+      "requestId": "072798c8-24ef-479f-a43f-411224041c13",
+      "providerRequestId": "chatcmpl-568152513cdd4b5ba4ddb80c62dcb8b0",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:20.474Z",
+      "completedAt": "2026-10-11T14:52:28.212Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 200,
+        "promptTokens": 94,
+        "completionTokens": 106
+      },
+      "latencyMs": 7738,
+      "providerInferenceMs": 7477,
+      "prompt": "A matakin teku (sea level), a wane zafi na ma'aunin Celsius ne ruwa mai tsabta yake tafasa?",
+      "response": "Ruwan da ke cikin matsayin teku, wanda shine alamar 0 mita sama da matakin teku, yana tafasa a digiri 100 na ma'aunin Celsius. Wannan yanayi ana kiransa \"matakin tafasar\" kuma yana faruwa ne saboda matsi na iska yana raguwa yayin da muke tashi daga matakin teku, wanda ke rage wurin tafasar ruwa.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "water-boiling-point.ig",
+      "language": "ig",
+      "requestId": "85cd0c3c-06c7-4a23-8a16-678b2411b00a",
+      "providerRequestId": "chatcmpl-c2bd9f134ea74598a411c79cab0adce7",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:28.212Z",
+      "completedAt": "2026-10-11T14:52:32.775Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 156,
+        "promptTokens": 95,
+        "completionTokens": 61
+      },
+      "latencyMs": 4563,
+      "providerInferenceMs": 4294,
+      "prompt": "N'ogo oke osimiri (sea level), n'ogo okpomọkụ ole na Celsius ka mmiri dị ọcha na-esi?",
+      "response": "Mmiri dị ọcha na-esi na n'ogo okpomọkụ nke 100 degrees Celsius. Nke a bụ ihe pụrụ iche maka mmiri, dabere na ọnọdụ nrụgide ikuku na ala.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "capital-of-nigeria.en-NG",
+      "language": "en-NG",
+      "requestId": "6aff6cce-f176-4b5f-9b28-bf16f058b0cd",
+      "providerRequestId": "chatcmpl-4f4a4ca9183a4954922fff739574e8ec",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:32.776Z",
+      "completedAt": "2026-10-11T14:52:33.750Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 79,
+        "promptTokens": 69,
+        "completionTokens": 10
+      },
+      "latencyMs": 974,
+      "providerInferenceMs": 722,
+      "prompt": "What is the capital city of Nigeria?",
+      "response": "The capital city of Nigeria is Abuja.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "capital-of-nigeria.yo",
+      "language": "yo",
+      "requestId": "fca7d276-dad9-4e0a-b081-d58fc1ecbb02",
+      "providerRequestId": "chatcmpl-e4eabf2b565e4acd803393a877e51bdb",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:33.750Z",
+      "completedAt": "2026-10-11T14:52:35.852Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 112,
+        "promptTokens": 86,
+        "completionTokens": 26
+      },
+      "latencyMs": 2101,
+      "providerInferenceMs": 1840,
+      "prompt": "Kí ni olú-ìlú orílẹ̀-èdè Nàìjíríà?",
+      "response": "Olú-ìlú orílẹ̀-èdè Nàìjíríà ni Abuja.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "capital-of-nigeria.ha",
+      "language": "ha",
+      "requestId": "1e49b96d-532d-41d2-85ab-0b883a6fa049",
+      "providerRequestId": "chatcmpl-2f537aa81cda46e58371c6ca063df736",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:35.854Z",
+      "completedAt": "2026-10-11T14:52:37.242Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 91,
+        "promptTokens": 75,
+        "completionTokens": 16
+      },
+      "latencyMs": 1388,
+      "providerInferenceMs": 1132,
+      "prompt": "Mene ne babban birnin tarayyar Najeriya?",
+      "response": "Babban birnin tarayyar Najeriya shine Abuja.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "capital-of-nigeria.ig",
+      "language": "ig",
+      "requestId": "a450fa3e-0dd1-4746-b3e5-52887abf198e",
+      "providerRequestId": "chatcmpl-8fa70ac345e347fcb15fe9341e7ba855",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:37.242Z",
+      "completedAt": "2026-10-11T14:52:38.490Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 89,
+        "promptTokens": 75,
+        "completionTokens": 14
+      },
+      "latencyMs": 1247,
+      "providerInferenceMs": 998,
+      "prompt": "Kedu obodo bụ isi obodo Naịjirịa?",
+      "response": "Isi obodo Naịjirịa bụ Abuja.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "states-in-nigeria.en-NG",
+      "language": "en-NG",
+      "requestId": "ac3314f5-0d0a-4601-8016-649337beca78",
+      "providerRequestId": "chatcmpl-1d097cf28cac4c3f9ee01ecf99890489",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:38.490Z",
+      "completedAt": "2026-10-11T14:52:41.545Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 115,
+        "promptTokens": 75,
+        "completionTokens": 40
+      },
+      "latencyMs": 3055,
+      "providerInferenceMs": 2800,
+      "prompt": "How many states does Nigeria have, not counting the Federal Capital Territory?",
+      "response": "Nigeria has 36 states, excluding the Federal Capital Territory (FCT). The FCT is a separate entity that serves as the capital of Nigeria but is not considered one of the states.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "states-in-nigeria.yo",
+      "language": "yo",
+      "requestId": "9d00b0ea-76be-4ecd-ac77-4e5e9976258e",
+      "providerRequestId": "chatcmpl-2f0f99b426b24753bb0043c7dcf21ac8",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:41.545Z",
+      "completedAt": "2026-10-11T14:52:55.783Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 313,
+        "promptTokens": 118,
+        "completionTokens": 195
+      },
+      "latencyMs": 14237,
+      "providerInferenceMs": 13971,
+      "prompt": "Ìpínlẹ̀ mélòó ni ó wà ní Nàìjíríà, láìka Agbègbè Olú-ìlú Ìjọba Àpapọ̀ (FCT) mọ́ ọn?",
+      "response": "Nàìjíríà ní ipinlẹ̀ mẹ́tàdínlógún, pẹ̀lú àwọn agbegbe tó yàtọ̀ síra wọn tí wọ́n sábà máa ń kà sí apá kan ti orílẹ̀-èdè náà. Láìka Agbègbè Olú-ìlú Ìjọba Àpapọ̀ (FCT), èyí jẹ́ olú-ìlú orílẹ̀-èdè náà tí kì í ṣe ti ipinlẹ̀ kankan, ṣùgbọ́n ó jẹ́ iṣakoso lórí ìpele orílẹ̀-èdè, Nàìjíríà ní ipinlẹ̀ mẹ́tàdínlógún.",
+      "verdict": "NEEDS_REVIEW",
+      "error": null
+    },
+    {
+      "caseKey": "states-in-nigeria.ha",
+      "language": "ha",
+      "requestId": "9c18141c-e0bc-44fc-8c51-e6f59985db7a",
+      "providerRequestId": "chatcmpl-a4f5d6fcb5054365ba7ec657bd094633",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:55.784Z",
+      "completedAt": "2026-10-11T14:52:59.933Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 152,
+        "promptTokens": 97,
+        "completionTokens": 55
+      },
+      "latencyMs": 4149,
+      "providerInferenceMs": 3881,
+      "prompt": "Jihohi nawa ne Najeriya take da su, ba tare da ƙirga Babban Birnin Tarayya (FCT) ba?",
+      "response": "Najeriya na da jihohi talatin da shida, ba tare da la'akari da Babban Birnin Tarayya Abuja ba. Don haka, amsar da ta dace ita ce B. 36.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "states-in-nigeria.ig",
+      "language": "ig",
+      "requestId": "7d9197ea-8ec4-432e-8c07-f5b489e8ccda",
+      "providerRequestId": "chatcmpl-95bf8fbcd54547cc9e3ba42f36f73847",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:52:59.934Z",
+      "completedAt": "2026-10-11T14:53:19.183Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 355,
+        "promptTokens": 90,
+        "completionTokens": 265
+      },
+      "latencyMs": 19250,
+      "providerInferenceMs": 18995,
+      "prompt": "Steeti ole dị na Naịjirịa, ma ọ bụrụ na agụghị Federal Capital Territory (FCT)?",
+      "response": "Enwere steeti iri atọ na isii na Naịjirịa, ma ọ bụrụ na a hapụla Federal Capital Territory (FCT). Steeti ndị a gụnyere:\n\n1. Abia  \n2. Adamawa  \n3. Akwa Ibom  \n4. Anambra  \n5. Bauchi  \n6. Bayelsa  \n7. Benue  \n8. Borno  \n9. Cross River  \n10. Delta  \n11. Ebonyi  \n12. Enugu  \n13. Gombe  \n14. Imo  \n15. Jigawa  \n16. Kaduna  \n17. Kano  \n18. Katsina  \n19. Kebbi  \n20. Kogi  \n21. Kwara  \n22. Lagos  \n23. Nasarawa  \n24. Neja  \n25. Ogun  \n26. Ondo  \n27. Osun  \n28. Plateau  \n29. Rivers  \n30. Sokoto  \n31. Taraba  \n32. Yobe  \n33. Zamfara  \n\nA naghị etinye FCT n'etiti steeti mana a na-ewere ya dị ka mpaghara pụrụ iche maka ebumnuche ọchịchị obodo.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "independence-year.en-NG",
+      "language": "en-NG",
+      "requestId": "25fbced4-8cb9-46a8-8c7d-8e20cc8c4440",
+      "providerRequestId": "chatcmpl-4da8cd1716934c36b550220e8290ed0b",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:19.185Z",
+      "completedAt": "2026-10-11T14:53:20.583Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 87,
+        "promptTokens": 71,
+        "completionTokens": 16
+      },
+      "latencyMs": 1398,
+      "providerInferenceMs": 1137,
+      "prompt": "In what year did Nigeria gain independence from Britain?",
+      "response": "Nigeria gained independence from Britain on October 1, 1960.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "independence-year.yo",
+      "language": "yo",
+      "requestId": "bdfb608a-c572-410b-a32c-e6eea66c75d8",
+      "providerRequestId": "chatcmpl-132d0be2903749b8be9b127675445627",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:20.584Z",
+      "completedAt": "2026-10-11T14:53:24.084Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 146,
+        "promptTokens": 100,
+        "completionTokens": 46
+      },
+      "latencyMs": 3500,
+      "providerInferenceMs": 3250,
+      "prompt": "Ọdún wo ni Nàìjíríà gba òmìnira lọ́wọ́ ìjọba Gẹ̀ẹ́sì?",
+      "response": "Nàìjíríà gba òmìnira rẹ ní October 1, 1960, láti ọwọ́ ìjọba Gẹ̀ẹ́sì.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "independence-year.ha",
+      "language": "ha",
+      "requestId": "96243eb9-8696-45d4-84ab-0b80f17d48aa",
+      "providerRequestId": "chatcmpl-3965da427dff42739dcc5cc5fbdcc15b",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:24.084Z",
+      "completedAt": "2026-10-11T14:53:26.322Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 114,
+        "promptTokens": 86,
+        "completionTokens": 28
+      },
+      "latencyMs": 2238,
+      "providerInferenceMs": 1981,
+      "prompt": "A wace shekara ne Najeriya ta samu 'yancin kai daga Birtaniya?",
+      "response": "Najeriya ta samu 'yancin kai daga Birtaniya a shekarar 1960.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "independence-year.ig",
+      "language": "ig",
+      "requestId": "3a0d8d77-ae62-4f5d-acaa-574a5c7f1e14",
+      "providerRequestId": "chatcmpl-8d9243e3926c44a98422431ce1bbeb90",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:26.323Z",
+      "completedAt": "2026-10-11T14:53:31.922Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 163,
+        "promptTokens": 87,
+        "completionTokens": 76
+      },
+      "latencyMs": 5599,
+      "providerInferenceMs": 5338,
+      "prompt": "N'afọ ole ka Naịjirịa nwetara nnwere onwe site n'aka ndị Britain?",
+      "response": "Naịjirịa nwetara nnwere onwe site n'aka ndị Britain na afọ 1960. Ọ bụ ihe dị mkpa na akụkọ ihe mere eme, mgbe o were ọtụtụ iri afọ nke mgbalị na mgbanwe maka nnwere onwe ya.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "yoruba-good-morning.en-NG",
+      "language": "en-NG",
+      "requestId": "d85b2686-a0b1-4143-b09b-3e903be14732",
+      "providerRequestId": "chatcmpl-2d21f3b624924122b0b66ed01f2b28c6",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:31.922Z",
+      "completedAt": "2026-10-11T14:53:33.937Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 99,
+        "promptTokens": 74,
+        "completionTokens": 25
+      },
+      "latencyMs": 2015,
+      "providerInferenceMs": 1759,
+      "prompt": "What is the common Yoruba greeting for \"good morning\"?",
+      "response": "The common Yoruba greeting for \"good morning\" is \"Ẹ kú àtàárọ̀.\"",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "yoruba-good-morning.yo",
+      "language": "yo",
+      "requestId": "854fa6cf-1704-416b-9aa7-14499ee21ea2",
+      "providerRequestId": "chatcmpl-43756e85df9a4e55ba8ae5a4f8a787e9",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:33.938Z",
+      "completedAt": "2026-10-11T14:53:36.934Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 129,
+        "promptTokens": 90,
+        "completionTokens": 39
+      },
+      "latencyMs": 2997,
+      "providerInferenceMs": 2749,
+      "prompt": "Kí ni ìkíni Yorùbá tí a máa ń lò láti sọ \"good morning\"?",
+      "response": "Ìkíni Yorùbá tí a máa ń lò láti sọ \"good morning\" ni \"Ẹ kú àtàárọ̀.\"",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "yoruba-good-morning.ha",
+      "language": "ha",
+      "requestId": "3b2fe4a7-ba68-439a-ad82-aa05011eb6aa",
+      "providerRequestId": "chatcmpl-313796a2c21c45589a6e95c414f8a9fb",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:36.935Z",
+      "completedAt": "2026-10-11T14:53:39.796Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 122,
+        "promptTokens": 85,
+        "completionTokens": 37
+      },
+      "latencyMs": 2861,
+      "providerInferenceMs": 2596,
+      "prompt": "Mene ne gaisuwar Yarbanci da ake yi da safe don a ce \"good morning\"?",
+      "response": "Gaisuwar Yarbanci da ake yi da safe don a ce \"good morning\" ita ce \"Ẹ kú àtàárọ̀.\"",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "yoruba-good-morning.ig",
+      "language": "ig",
+      "requestId": "f617a6a3-5dcb-442b-ba7d-5e800d1a9b00",
+      "providerRequestId": "chatcmpl-63eb684fa5af4d6ebfbac7da16b1a553",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:39.796Z",
+      "completedAt": "2026-10-11T14:53:56.464Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 320,
+        "promptTokens": 90,
+        "completionTokens": 230
+      },
+      "latencyMs": 16668,
+      "providerInferenceMs": 16408,
+      "prompt": "Kedu ekele ndị Yoruba na-ekele n'ụtụtụ iji kwuo \"good morning\"?",
+      "response": "N’ezinụlọ Yoruba, ekele ndị a na-ejikarị eme “good morning” gụnyere:\n\n1. **Ẹ kú àtàárọ̀** - Ekele a pụtara \"ụtụtụ ọma\" ma ọ bụ \"ehihie ọma.\"\n2. **Ẹ kú ọ̀sán** - Pụtara \"ehihie ọma\" ma ọ bụ \"ehihie ọma.\"\n3. **Báwo ni sí** - Nkebi ahịrịokwu a na-ekwupụta \"kí ka ọ dị\" ma a na-ejikwa ya n'oge ụtụtụ.\n\nYa mere, mgbe ị na-agwa mmadụ \"good morning,\" ị nwere ike ikwu \"Ẹ kú àtàárọ̀,\" \"Ẹ kú ọ̀sán,\" ma ọ bụ \"Báwo ni sí.\"",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "hausa-thank-you.en-NG",
+      "language": "en-NG",
+      "requestId": "57d40f7b-41c6-4502-a262-a24ccbe43731",
+      "providerRequestId": "chatcmpl-0172240fad4c419681991ad55416e18f",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:56.466Z",
+      "completedAt": "2026-10-11T14:53:57.930Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 90,
+        "promptTokens": 73,
+        "completionTokens": 17
+      },
+      "latencyMs": 1463,
+      "providerInferenceMs": 1203,
+      "prompt": "How do you say \"thank you\" in Hausa?",
+      "response": "In Hausa, the word for \"thank you\" is \"na gode.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "hausa-thank-you.yo",
+      "language": "yo",
+      "requestId": "8560a6cb-0549-4653-b05d-bdb7ca0c99da",
+      "providerRequestId": "chatcmpl-07567a4a59814cfea8f2d20961bec080",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:53:57.930Z",
+      "completedAt": "2026-10-11T14:54:00.358Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 123,
+        "promptTokens": 92,
+        "completionTokens": 31
+      },
+      "latencyMs": 2428,
+      "providerInferenceMs": 2181,
+      "prompt": "Báwo ni a ṣe ń sọ \"ẹ ṣé\" (thank you) ní èdè Hausa?",
+      "response": "Ní èdè Hausa, \"ẹ ṣé\" tàbí \"na gode\" ana sọ pé \"Na gode.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "hausa-thank-you.ha",
+      "language": "ha",
+      "requestId": "f277483d-9985-443f-af7a-13a8fffbfdf4",
+      "providerRequestId": "chatcmpl-09da7236593a4c2c894ca48318d3b241",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:00.359Z",
+      "completedAt": "2026-10-11T14:54:01.886Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 97,
+        "promptTokens": 79,
+        "completionTokens": 18
+      },
+      "latencyMs": 1527,
+      "providerInferenceMs": 1274,
+      "prompt": "Ta yaya ake cewa \"thank you\" a harshen Hausa?",
+      "response": "A harshen Hausa, ana ce \"thank you\" da \"na gode\".",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "hausa-thank-you.ig",
+      "language": "ig",
+      "requestId": "36feb6eb-d969-470e-b148-a67eda4fbb1d",
+      "providerRequestId": "chatcmpl-199b30eb96e34740abcd99f3278f2832",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:01.887Z",
+      "completedAt": "2026-10-11T14:54:04.127Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 114,
+        "promptTokens": 86,
+        "completionTokens": 28
+      },
+      "latencyMs": 2240,
+      "providerInferenceMs": 1975,
+      "prompt": "Kedu ka e si ekwu \"daalụ\" (thank you) n'asụsụ Hausa?",
+      "response": "Na asụsụ Hausa, \"daalụ\" (thank you) na-ekwu dịka \"na gode.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "igbo-thank-you.en-NG",
+      "language": "en-NG",
+      "requestId": "03b7deb8-8d33-43ab-87f3-a62c88e983f9",
+      "providerRequestId": "chatcmpl-687a559677e44bf4849b24fde34e1fa7",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:04.128Z",
+      "completedAt": "2026-10-11T14:54:05.651Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 91,
+        "promptTokens": 73,
+        "completionTokens": 18
+      },
+      "latencyMs": 1524,
+      "providerInferenceMs": 1274,
+      "prompt": "How do you say \"thank you\" in Igbo?",
+      "response": "In Igbo, the word for \"thank you\" is \"Daalụ.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "igbo-thank-you.yo",
+      "language": "yo",
+      "requestId": "ba98b961-06fc-477b-bf0b-35d6f0606a4d",
+      "providerRequestId": "chatcmpl-31a9972c6579410691385f283787f0db",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:05.652Z",
+      "completedAt": "2026-10-11T14:54:28.333Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 397,
+        "promptTokens": 92,
+        "completionTokens": 305
+      },
+      "latencyMs": 22681,
+      "providerInferenceMs": 21956,
+      "prompt": "Báwo ni a ṣe ń sọ \"ẹ ṣé\" (thank you) ní èdè Igbo?",
+      "response": "Ní èdè Igbo, \"ẹ ṣé\" tàbí \"o ṣeun\" ni a sọ gẹ́gẹ́ bí \"Daalụ.\" Nítorí náà, ìdáhùn sí ìbéèrè rẹ ni:\n\n- Daalụ (n'ozuzu) - Ọ̀kan lára ​​àwọn àṣàyàn tí ó wọpọ jùlọ fún \"o ṣeun.\"\n- Daalụ (ìtẹ́wọ́gbà) - Àṣàyàn kan tó dá lórí ìbáṣepọ.\n- Daalụ (ìmúrasílẹ̀) - Lati fi hàn pé o mọyì iṣẹ́ ẹnikan.\n\nÀwọn àṣàyàn míì tún wà nínú èdè Igbo fún \"o ṣeun,\" gẹ́gẹ́ bí \"Chineke daa\" (Máyè daa), \"O daa\" (Ị na-enwe ezigbo ụbọchị), tàbí \"O daa\" (Ị na-adịkwa mma). Kowanne nínú wọn lè dájú pé ó yẹ fún àyíká pàtó.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "igbo-thank-you.ha",
+      "language": "ha",
+      "requestId": "0da25a23-4f81-4373-a97e-53f804ae7c52",
+      "providerRequestId": "chatcmpl-a9357d3fb5cf462a94c78f892e4a9676",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:28.334Z",
+      "completedAt": "2026-10-11T14:54:30.066Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 102,
+        "promptTokens": 83,
+        "completionTokens": 19
+      },
+      "latencyMs": 1732,
+      "providerInferenceMs": 1344,
+      "prompt": "Ta yaya ake cewa \"na gode\" (thank you) a harshen Igbo?",
+      "response": "A harshen Igbo, ana ce \"na gode\" da \"Daalụ\".",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "igbo-thank-you.ig",
+      "language": "ig",
+      "requestId": "c282e088-8c12-4c48-bc90-a44593826443",
+      "providerRequestId": "chatcmpl-96948541a95e4f8f9366b5cbe3589c74",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:30.066Z",
+      "completedAt": "2026-10-11T14:54:41.924Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 245,
+        "promptTokens": 81,
+        "completionTokens": 164
+      },
+      "latencyMs": 11858,
+      "providerInferenceMs": 11602,
+      "prompt": "Kedu ka e si ekwu \"thank you\" n'asụsụ Igbo?",
+      "response": "N'asụsụ Igbo, \"thank you\" bụ \"daalụ.\" Nke a bụ otu esi ekwu ya: \n\n- Okwu mbụ bụ \"da,\" nke pụtara \"hand.\"\n- Mgbe ahụ, okwu na-esote bụ \"alu,\" nke pụtara \"to take.\"\n\nYa mere, mgbe ị jikọtara ha, \"daalụ\" sụgharịa ozugbo dịka \"hand to take,\" ma ọ bụ iji aka were ihe. N’ime omenala Igbo, ọ bụ omume mara mma ikwupụta ekele site n’iji aka gosi na ị na-enye ekele gị.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-market-price.en-NG",
+      "language": "en-NG",
+      "requestId": "4c6727f7-3639-4720-bcbe-4e8f1fdc7c73",
+      "providerRequestId": "chatcmpl-bc50d74aacd84fa6a3ae68b85e1f8505",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:41.925Z",
+      "completedAt": "2026-10-11T14:54:43.759Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 127,
+        "promptTokens": 105,
+        "completionTokens": 22
+      },
+      "latencyMs": 1834,
+      "providerInferenceMs": 1569,
+      "prompt": "Rewrite this sentence in simple Nigerian English for a primary school pupil. Keep every number and name exactly as written: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+      "response": "Amina gave ₦75,000 for a bag of rice at the Bodija Market on Monday.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-market-price.yo",
+      "language": "yo",
+      "requestId": "dc54d931-a402-4eb3-82b6-a5da34ff401b",
+      "providerRequestId": "chatcmpl-ca504fed125347d7a27e87afb2129e43",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:54:43.760Z",
+      "completedAt": "2026-10-11T14:55:12.530Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 520,
+        "promptTokens": 132,
+        "completionTokens": 388
+      },
+      "latencyMs": 28770,
+      "providerInferenceMs": 28518,
+      "prompt": "Túmọ̀ gbólóhùn yìí sí èdè Yorùbá. Má ṣe yí nọ́ńbà tàbí orúkọ kankan padà: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+      "response": "Nínú àwọn ìṣòro tí wọ́n fi lélẹ̀ nípa àtúnṣe àti ìyípadà, mo ti rí i pé ó dára láti dojú kọ́ àwọn apá kan pàtó. Nítorí náà, jẹ́ ká wo bí a ṣe lè túmọ̀ gbolohun náà nígbàtí a bá pa nọ́mbà àti orúkọ mọ́.\n\nGbolohun ìpilẹ̀: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"\n\nÌtumọ̀ sí Yorùbá:\n\n\"Aminatò san ₦75,000 fún àpótí iresi kan ní Ọjà Bodija ní ọjọ́ Aarọ.\"\n\nEyi ni àlàyé:\n- \"Amina\" di \"Aminatò\".\n- \"paid\" di \"san\".\n- \"₦75,000\" di \"₦75,000\", nítorí pé nọ́ńbà náà wa ní irú owó tó dájú.\n- \"for\" di \"fún\".\n- \"a bag of rice\" di \"àpótí iresi\".\n- \"at\" di \"ní\".\n- \"Bodija Market\" di \"Ọjà Bodija\".\n- \"on Monday\" di \"ní ọjọ́ Aarọ\".\n\nMo ní ìrètí pé èyí yóò ran é lọwọ! Tí o bá ní ìbéèrè míì, má ṣe ṣiyemeji láti béèrè.",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-market-price.ha",
+      "language": "ha",
+      "requestId": "c1e042b7-9366-466b-ac5e-16608e1fd2fd",
+      "providerRequestId": "chatcmpl-a8447793ec71417b9d86a5d9a1cd3251",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:12.531Z",
+      "completedAt": "2026-10-11T14:55:14.866Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 139,
+        "promptTokens": 110,
+        "completionTokens": 29
+      },
+      "latencyMs": 2335,
+      "providerInferenceMs": 2064,
+      "prompt": "Fassara wannan jimla zuwa harshen Hausa. Kada ka canza kowace lamba ko suna: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+      "response": "\"Amina ta biya ₦75,000 don buhun shinkafa a kasuwar Bodija ranar Litinin.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-market-price.ig",
+      "language": "ig",
+      "requestId": "ef61be44-5af2-4740-8289-46a5e1dd43e9",
+      "providerRequestId": "chatcmpl-023bcd3eff134c5a98b9e7b69215643b",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:14.867Z",
+      "completedAt": "2026-10-11T14:55:17.061Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 155,
+        "promptTokens": 128,
+        "completionTokens": 27
+      },
+      "latencyMs": 2195,
+      "providerInferenceMs": 1942,
+      "prompt": "Sụgharịa ahịrịokwu a gaa n'asụsụ Igbo. Agbanwela ọnụọgụgụ ma ọ bụ aha ọ bụla: \"Amina paid ₦75,000 for a bag of rice at Bodija Market on Monday.\"",
+      "response": "Amina kwụrụ ₦75,000 maka akpa osikapa na Bodija Market na Mọnde.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-dosage.en-NG",
+      "language": "en-NG",
+      "requestId": "46a75fa3-0051-4533-9d6d-c69c2521c53d",
+      "providerRequestId": "chatcmpl-6cb3e7622a2143ea98592d79f7df273a",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:17.062Z",
+      "completedAt": "2026-10-11T14:55:19.365Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 123,
+        "promptTokens": 94,
+        "completionTokens": 29
+      },
+      "latencyMs": 2303,
+      "providerInferenceMs": 2052,
+      "prompt": "Explain this instruction to a patient in simple Nigerian English, keeping every number exactly the same: \"Take 2 tablets every 8 hours for 5 days.\"",
+      "response": "\"Mu kwayoyi meji ni gbogbo wakati mẹjọ fun awọn ọjọ marun.\"",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-dosage.yo",
+      "language": "yo",
+      "requestId": "55365ee6-9853-4554-b84e-c9c76aea0333",
+      "providerRequestId": "chatcmpl-7c4e018e42434c9596fb9620712034e9",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:19.365Z",
+      "completedAt": "2026-10-11T14:55:22.346Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 164,
+        "promptTokens": 126,
+        "completionTokens": 38
+      },
+      "latencyMs": 2980,
+      "providerInferenceMs": 2716,
+      "prompt": "Túmọ̀ ìtọ́ni yìí sí èdè Yorùbá fún aláìsàn kan. Má ṣe yí nọ́ńbà kankan padà: \"Take 2 tablets every 8 hours for 5 days.\"",
+      "response": "Gba ogójì (40) àpògbó ní gbogbo wákàtí mẹjọ fún ọjọ́ márùn-ún.",
+      "verdict": "FAILED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-dosage.ha",
+      "language": "ha",
+      "requestId": "a4a639f0-035c-4a69-a87f-0367ac830386",
+      "providerRequestId": "chatcmpl-ca95ca96a67748fd8ac0567f374184df",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:22.347Z",
+      "completedAt": "2026-10-11T14:55:24.946Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 138,
+        "promptTokens": 105,
+        "completionTokens": 33
+      },
+      "latencyMs": 2599,
+      "providerInferenceMs": 2347,
+      "prompt": "Fassara wannan umarni zuwa Hausa domin mara lafiya. Kada ka canza kowace lamba: \"Take 2 tablets every 8 hours for 5 days.\"",
+      "response": "\"Shan kwayoyin guda 2 sau biyu a cikin awanni 8 na tsawon kwanaki 5.\"",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "translate-dosage.ig",
+      "language": "ig",
+      "requestId": "65b225ef-46ff-410e-8856-a5da088ab492",
+      "providerRequestId": "chatcmpl-e64bc58a59284d32a8cfe9e7369c4f14",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:24.947Z",
+      "completedAt": "2026-10-11T14:55:27.358Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 150,
+        "promptTokens": 120,
+        "completionTokens": 30
+      },
+      "latencyMs": 2411,
+      "providerInferenceMs": 2146,
+      "prompt": "Sụgharịa ntụziaka a gaa n'asụsụ Igbo maka onye ọrịa. Agbanwela ọnụọgụgụ ọ bụla: \"Take 2 tablets every 8 hours for 5 days.\"",
+      "response": "Were 2 mkpụrụ ọgwụ kwa awa asatọ ruo ụbọchị ise.",
+      "verdict": "PASSED",
+      "error": null
+    },
+    {
+      "caseKey": "pos-json-definition.en-NG",
+      "language": "en-NG",
+      "requestId": "853b883f-03eb-40c0-bb39-53115aaa9626",
+      "providerRequestId": "chatcmpl-a4441077e1d84126ac9827dcbf0317a6",
+      "servedModel": "NCAIR1/N-ATLaS",
+      "startedAt": "2026-10-11T14:55:27.359Z",
+      "completedAt": "2026-10-11T14:55:31.417Z",
+      "finishReason": "stop",
+      "usage": {
+        "totalTokens": 148,
+        "promptTokens": 94,
+        "completionTokens": 54
+      },
+      "latencyMs": 4058,
+      "providerInferenceMs": 3803,
+      "prompt": "Return only a JSON object with the keys \"term\" and \"meaning\" that explains what \"POS\" means in Nigerian banking. Do not add any other text.",
+      "response": "```json\n{\n  \"term\": \"POS\",\n  \"meaning\": \"In Nigerian banking, POS refers to Point of Sale, which is an electronic payment processing system used for transactions such as withdrawing cash from an ATM or making payments at retail outlets.\"\n}\n```",
+      "verdict": "PASSED",
+      "error": null
+    }
+  ],
+  "attribution": "N-ATLaS is an initiative of the Federal Ministry of Communications, Innovation and Digital Economy, and powered by Awarri Technologies.",
+  "integrity": {
+    "algorithm": "sha256",
+    "canonicalisation": "sorted-keys JSON",
+    "digest": "f47d64cc94e7dcfc9fa742d3809c3e2a8909f47a6f735f51c62ecb3d5ff3cbcb"
+  }
+}
